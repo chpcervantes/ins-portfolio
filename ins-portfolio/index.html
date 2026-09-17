@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant.">
+<title>Christian Paul Cervantes | Insurance Agency Operations Specialist</title>
+<style>
+:root{
+  --navy:#313647;--slate:#435663;--sage:#a3b087;--cream:#fff8d4;
+  --white:#fff;--ink:#202431;--muted:#68717d;--line:rgba(49,54,71,.13);
+  --shadow:0 20px 60px rgba(49,54,71,.12);--radius:24px;--max:1160px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,248,212,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}
+.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--navy);color:var(--cream);display:grid;place-items:center;font-size:14px}
+.nav-links{display:flex;gap:24px;color:var(--slate);font-weight:700}
+.nav-links a:hover{color:var(--navy)}.nav-cta{padding:11px 17px;border-radius:999px;background:var(--navy);color:#fff;font-weight:800;}
+
+.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:80px 0 76px}
+.hero:after{content:"";position:absolute;width:500px;height:500px;right:-180px;top:-210px;border-radius:50%;background:var(--sage);opacity:.22}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr .82fr;align-items:center;gap:70px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cream);font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px}
+.eyebrow:before{content:"";width:28px;height:2px;background:var(--sage)}
+h1{font-size:clamp(54px,8vw,92px);line-height:.98;letter-spacing:-.065em;margin:0 0 24px}
+.hero-copy{color:rgba(255,255,255,.78);margin-bottom:30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:999px;font-weight:800;border:1px solid transparent}
+.btn-primary{background:var(--cream);color:var(--navy)}.btn-secondary{border-color:rgba(255,255,255,.25);color:#fff}
+
+.photo-card{position:relative;min-height:500px;border-radius:34px;background:var(--slate);padding:13px;transform:rotate(1deg);box-shadow:0 28px 80px rgba(0,0,0,.25)}
+.photo-card:before{content:"";position:absolute;inset:12px;border-radius:25px;background:linear-gradient(145deg,rgba(163,176,135,.32),transparent 45%);pointer-events:none;z-index:2}
+.photo-card img{width:100%;height:474px;object-fit:cover;object-position:center 30%;border-radius:25px;filter:brightness(1.08) contrast(1.04) saturate(.92)}
+.photo-label{position:absolute;z-index:3;bottom:28px;left:28px;padding:10px 14px;border-radius:999px;background:rgba(49,54,71,.82);backdrop-filter:blur(8px);font-weight:800;color:var(--cream)}
+
+section{padding:96px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}
+.kicker{color:var(--slate);text-transform:uppercase;letter-spacing:.13em;font-weight:900;margin-bottom:9px}
+h2{margin:0;font-size:clamp(40px,5.5vw,62px);line-height:1.02;letter-spacing:-.05em}
+.section-intro{color:var(--muted)}
+
+.about{display:grid;grid-template-columns:.82fr 1.18fr;gap:70px;align-items:center}
+.about-image{min-height:440px;border-radius:var(--radius);background:var(--sage);padding:14px;overflow:hidden}
+.about-image img{height:410px;width:100%;object-fit:cover;object-position:center 28%;border-radius:18px;filter:brightness(1.06) contrast(1.03) saturate(.9)}
+.about-copy p{color:var(--muted);}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{color:var(--muted);font-size:12px;font-weight:700}
+
+.services{background:#fff}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card-icon{width:48px;height:48px;border-radius:15px;background:var(--cream);color:var(--navy);display:grid;place-items:center;font-weight:900;margin-bottom:22px}
+.card h3{margin:0 0 10px;}.card p{margin:0 0 17px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{background:#f3f1e3;color:var(--slate);border-radius:999px;font-weight:800}
+
+/* Tools wrap layout fixes */
+.tools-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
+.tools-copy {
+  position: sticky;
+  top: 120px; /* Makes the text follow you as you scroll past the tools */
+}
+.tools-copy p{color:var(--muted)}
+.logo-note { display: none; } /* Removes invisible gap */
+
+.process{background:var(--slate);color:#fff}.process .kicker{color:var(--cream)}.process .section-intro{color:rgba(255,255,255,.7)}
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.step{padding:24px 18px;border-top:2px solid var(--sage);background:rgba(255,255,255,.045);border-radius:0 0 18px 18px}
+.step-number{color:var(--sage);font-weight:900;font-size:12px}.step h3{margin:28px 0 8px}.step p{margin:0;color:rgba(255,255,255,.65);}
+
+.experience-list{display:grid;gap:16px}.experience{display:grid;grid-template-columns:190px 1fr;gap:35px;padding:30px;border-radius:var(--radius);background:#fff;border:1px solid var(--line)}
+.experience-meta{color:var(--muted);}.experience h3{margin:0 0 4px;}.experience h4{margin:0 0 14px;color:var(--slate)}.experience p{margin:0;color:var(--muted)}
+
+.expect{background:#eef0df}.expect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.expect-card{padding:24px;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:20px}.expect-card h3{margin:0 0 7px;}.expect-card p{margin:0;color:var(--muted);}
+
+.contact{background:var(--navy);color:#fff;text-align:center}.contact .kicker{color:var(--sage)}.contact h2{max-width:760px;margin:auto}.contact p{margin:18px auto 28px;color:rgba(255,255,255,.72)}
+.contact-info{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}.contact-chip{border:1px solid rgba(255,255,255,.18);border-radius:999px;color:rgba(255,255,255,.8);}
+footer{padding:25px 0 100px 0;background:var(--navy);color:rgba(255,255,255,.55);border-top:1px solid rgba(255,255,255,.1);text-align:center} /* Added bottom padding so footer isn't hidden by calendar button */
+
+@media(max-width:900px){
+.nav-links{display:none}
+.hero-grid,.about{grid-template-columns:1fr}
+.tools-wrap{grid-template-columns:1fr; gap:30px} /* Shrunk massive gap for mobile */
+.hero{padding-top:70px}
+.photo-card{max-width:520px;width:100%;margin:auto}
+.process-grid{grid-template-columns:repeat(2,1fr)}
+.tools-copy {position: static;} /* Turns off sticky on mobile where it breaks flow */
+}
+@media(max-width:650px){
+.container{width:min(calc(100% - 28px),var(--max))}section{padding:70px 0}
+.cards,.stats,.expect-grid{grid-template-columns:1fr}.experience{grid-template-columns:1fr;gap:15px}
+.process-grid{grid-template-columns:1fr}.section-head{display:block}.section-intro{margin-top:16px}
+.hero-actions .btn{width:100%}.photo-card{min-height:390px}.photo-card img{height:364px}
+}
+
+/* ------------------------------------------- */
+/* Typography & Readability Improvements       */
+/* ------------------------------------------- */
+body { font-size: 17px; }
+.nav-links, .nav-cta, .btn { font-size: 16px; }
+.eyebrow { font-size: 14px; }
+.hero-copy { font-size: 22px; max-width: 700px; }
+.photo-label { font-size: 14px; }
+.kicker { font-size: 14px; }
+.section-intro { font-size: 18px; max-width: 600px; }
+.about-copy p, .tools-copy p, .contact p { font-size: 18px; }
+.card h3, .experience h3 { font-size: 24px; }
+.card p, .experience p, .expect-card p, .step p { font-size: 16px; }
+.tag { font-size: 13px; padding: 7px 12px; }
+.step h3, .expect-card h3, .experience h4 { font-size: 20px; }
+.experience-meta { font-size: 15px; }
+.contact-chip { font-size: 15px; padding: 12px 18px; }
+footer { font-size: 14px; }
+
+
+/* ------------------------------------------- */
+/* Animated tools section & Layout Fixes       */
+/* ------------------------------------------- */
+
+
+.tool-grid{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:18px 0 28px;
+  display:flex;
+  justify-content:center;
+  mask-image:linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image:linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
+}
+
+.tool-track{
+  display:flex;
+  width:max-content;
+  gap:30px;
+  animation:toolsMarquee 30s linear infinite;
+  will-change:transform;
+}
+
+.tool-row{
+  display:flex;
+  width:max-content;
+  gap:30px;
+  flex-shrink:0;
+}
+
+.tool{
+  flex:0 0 172px;
+  width:172px;
+  min-height:172px;
+  padding:18px 14px 16px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 12px 34px rgba(49,54,71,.09);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.tool:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 42px rgba(49,54,71,.15);
+}
+
+.tool-logo{
+  width:104px;
+  height:104px;
+  background:#fff;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+
+.tool-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.tool strong{
+  font-size:16px;
+  line-height:1.2;
+  color:var(--ink);
+}
+
+@keyframes toolsMarquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-50% - 15px))}
+}
+
+@media (max-width:900px){
+  .tool{flex-basis:156px;width:156px;min-height:158px}
+  .tool-logo{width:92px;height:92px}
+  .tool-track,.tool-row{gap:24px}
+}
+
+@media (max-width:650px){
+  .tool-grid{
+    padding:14px 0 22px;
+    mask-image:none;
+    -webkit-mask-image:none;
+  }
+  .tool-track{gap:18px;animation-duration:26s}
+  .tool-row{gap:18px}
+  .tool{
+    flex-basis:136px;
+    width:136px;
+    min-height:142px;
+    padding:14px 10px;
+  }
+  .tool-logo{width:80px;height:80px;margin-bottom:9px}
+  .tool strong{font-size:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .tool-track{
+    animation:none;
+    transform:none;
+  }
+}
+}
+
+}
+
+/* ------------------------------------------- */
+/* Floating Calendar Button                    */
+/* ------------------------------------------- */
+.floating-cal {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 12px 30px rgba(49, 54, 71, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.floating-cal:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: var(--slate);
+  box-shadow: 0 16px 40px rgba(49, 54, 71, 0.4);
+}
+.floating-cal svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+@media(max-width: 650px) {
+  .floating-cal {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}
+
+/* Keep the Let's connect area centered on desktop and mobile */
+#contact,
+#connect,
+.lets-connect,
+.connect-section,
+.connect-wrap{
+  text-align:center;
+}
+
+#contact .container,
+#connect .container,
+.lets-connect .container,
+.connect-section .container,
+.connect-wrap{
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+@media (max-width:650px){
+  #contact,
+  #connect,
+  .lets-connect,
+  .connect-section,
+  .connect-wrap{
+    text-align:center;
+  }
+}
+
+
+/* CP logo/photo placeholder */
+.brand-logo-placeholder{
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  border-radius:12px;
+  background:var(--white);
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  margin-right:10px;
+}
+    .brand-logo-placeholder{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      overflow:hidden;
+      flex:0 0 44px;
+      background:var(--white);
+      border:1px solid var(--line);
+      box-shadow:0 6px 18px rgba(49,54,71,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .brand-logo-placeholder img{
+      display:block;
+      width:100%;
+      height:100%;
+      max-width:none;
+      object-fit:cover;
+      object-position:center center;
+      border-radius:50%;
+    }
+
+.brand-logo-placeholder img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* If the placeholder image doesn't exist yet, keep the slot visibly ready for replacement. */
+.brand-logo-placeholder img[src="images/cp-logo-placeholder.png"]{
+  background:linear-gradient(135deg,var(--sage),var(--cream));
+}
+
+
+.brand-logo-placeholder + *{vertical-align:middle}
+
+
+/* Center the tools marquee */
+.tool-grid{
+  display:block !important;
+  text-align:center;
+  overflow:hidden;
+  position:relative;
+  width:100%;
+}
+
+.tool-track{
+  width:max-content !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  justify-content:center;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  animation:toolsMarqueeCentered 30s linear infinite !important;
+}
+
+@keyframes toolsMarqueeCentered{
+  0%{
+    transform:translateX(-50%);
+  }
+  100%{
+    transform:translateX(calc(-100% + 50vw));
+  }
+}
+
+@media (max-width:650px){
+  .tool-track{
+    animation-duration:26s !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .tool-track{
+    animation:none !important;
+    transform:translateX(-50%) !important;
+  }
+}
+
+
+
+/* Insurance operations portfolio tool showcase */
+.tools-showcase{min-width:0}
+.tools-group + .tools-group{margin-top:34px}
+.tools-group-label{
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--slate);
+  margin:0 0 14px;
+}
+.tool-grid-main{padding-top:6px;padding-bottom:10px}
+.carriers-group{border-top:1px solid var(--line);padding-top:28px}
+
+/* Insurance carrier marquee */
+.carrier-marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:8px 0 18px;
+  mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
+}
+.carrier-track{
+  display:flex;
+  width:max-content;
+  gap:22px;
+  will-change:transform;
+  animation:carrierMarquee 38s linear infinite;
+}
+.carrier-row{
+  display:flex;
+  width:max-content;
+  gap:22px;
+  flex-shrink:0;
+}
+.carrier-card{
+  flex:0 0 160px;
+  width:160px;
+  min-height:138px;
+  padding:13px 11px 12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 9px 26px rgba(49,54,71,.07);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.carrier-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 34px rgba(49,54,71,.12);
+}
+.carrier-logo{
+  position:relative;
+  width:116px;
+  height:76px;
+  border-radius:13px;
+  background:#fff;
+  border:1px dashed rgba(49,54,71,.18);
+  display:grid;
+  place-items:center;
+  padding:7px;
+  margin-bottom:9px;
+  overflow:hidden;
+}
+.carrier-logo-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  position:relative;
+  z-index:2;
+  background:#fff;
+}
+.carrier-placeholder{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:7px;
+  font-size:14px;
+  line-height:1.05;
+  font-weight:900;
+  color:var(--muted);
+  text-align:center;
+  z-index:1;
+}
+.carrier-card strong{
+  font-size:13px;
+  line-height:1.15;
+  color:var(--ink);
+}
+@keyframes carrierMarquee{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-50% - 11px))}
+}
+@media(max-width:900px){
+  .carrier-card{flex-basis:146px;width:146px}
+  .carrier-logo{width:106px;height:70px}
+  .carrier-track,.carrier-row{gap:18px}
+}
+@media(max-width:650px){
+  .carrier-marquee{
+    padding:6px 0 14px;
+    mask-image:none;
+    -webkit-mask-image:none;
+  }
+  .carrier-track{gap:14px;animation-duration:34s}
+  .carrier-row{gap:14px}
+  .carrier-card{
+    flex-basis:128px;
+    width:128px;
+    min-height:126px;
+    padding:10px 8px;
+  }
+  .carrier-logo{
+    width:94px;
+    height:62px;
+    margin-bottom:7px;
+  }
+  .carrier-placeholder{font-size:12px}
+  .carrier-card strong{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .carrier-track{
+    animation:none;
+    transform:none;
+  }
+}
+    @media (max-width:700px){
+      .brand-logo-placeholder{
+        width:38px;
+        height:38px;
+        flex-basis:38px;
+      }
+    }
+  
+    .floating-book-call{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:9999;
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:13px 18px;
+      border-radius:999px;
+      background:var(--navy);
+      color:var(--white);
+      text-decoration:none;
+      font-weight:800;
+      font-size:.92rem;
+      letter-spacing:.01em;
+      box-shadow:0 14px 34px rgba(49,54,71,.24);
+      border:1px solid rgba(255,255,255,.25);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .floating-book-call:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 40px rgba(49,54,71,.30);
+    }
+    .floating-book-icon{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--sage);
+      color:var(--navy);
+      font-size:.9rem;
+      line-height:1;
+    }
+    @media (max-width:700px){
+      .floating-book-call{
+        right:14px;
+        bottom:14px;
+        padding:11px 15px;
+        font-size:.84rem;
+      }
+      .floating-book-icon{
+        width:22px;
+        height:22px;
+      }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .floating-book-call{transition:none}
+    }
+
+  </style>
+</head>
+<body>
+<header class="nav">
+<div class="container nav-inner">
+<a class="brand" href="#top"><span class="brand-logo-placeholder"><img src="images/profile.jpg" alt="Christian Paul Cervantes"></span><span>Christian Paul Cervantes</span></a>
+<nav class="nav-links"><a href="#about">About</a><a href="#services">Services</a><a href="#tools">Tools</a><a href="#experience">Experience</a></nav>
+<a class="nav-cta" href="#contact">Let's Connect</a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow">Insurance Agency Operations Specialist • Virtual Assistant</div>
+<h1>Reliable operations support for insurance agencies.</h1>
+<p class="hero-copy">I support insurance agencies with day-to-day operations, client service, policy workflows, documentation, renewals, system management, and administrative coordination.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#services">Explore My Services</a><a class="btn btn-secondary" href="#contact">Work With Me</a></div>
+</div>
+<div class="photo-card">
+<img src="images/profile.jpg" alt="Christian Paul Cervantes professional portrait">
+<div class="photo-label">Insurance Agency Operations • Remote Support</div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container about">
+<div class="about-image"><img src="images/portrait.jpg" alt="Christian Paul Cervantes"></div>
+<div class="about-copy">
+<div class="kicker">About Me</div>
+<h2>Adaptable, dependable, and ready to contribute.</h2>
+<p>I'm an Insurance Agency Operations Specialist with hands-on experience supporting day-to-day agency operations, administrative workflows, customer service, and digital systems.</p>
+<p>My background includes supporting US-based insurance teams, managing detail-oriented workflows, communicating with clients and carrier partners, organizing policy information, handling renewals, and working across agency systems.</p>
+<p>I bring strong organization, follow-through, communication, and problem-solving skills to insurance agencies that need dependable operational support.</p>
+<div class="stats">
+<div class="stat"><strong>4+</strong><span>Years of professional support experience</span></div>
+<div class="stat"><strong>US</strong><span>Experience supporting US-based teams</span></div>
+<div class="stat"><strong>Remote</strong><span>Ready for distributed teams</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services" class="services">
+<div class="container">
+<div class="section-head"><div><div class="kicker">What I Do</div><h2>How I can help.</h2></div>
+<p class="section-intro">Focused support for insurance agencies, with additional administrative, customer service, and digital capabilities.</p></div>
+<div class="cards">
+<article class="card"><div class="card-icon">01</div><h3>Insurance Agency Operations</h3><p>Support the workflows that keep an insurance agency organized and moving.</p><div class="tags"><span class="tag">Policy processing</span><span class="tag">Renewals</span><span class="tag">AMS (EZLynx)</span><span class="tag">Agency workflows</span><span class="tag">Documentation</span></div></article>
+<article class="card"><div class="card-icon">02</div><h3>Client & Carrier Support</h3><p>Keep communication professional, timely, and organized across clients and carrier partners.</p><div class="tags"><span class="tag">Client communication</span><span class="tag">Carrier communication</span><span class="tag">Follow-ups</span><span class="tag">Email support</span><span class="tag">Phone support</span></div></article>
+<article class="card"><div class="card-icon">03</div><h3>Agency Systems & Workflow</h3><p>Maintain accurate information and organized processes across the systems agencies rely on.</p><div class="tags"><span class="tag">EZLynx</span><span class="tag">AgencyZoom</span><span class="tag">AMS workflows</span><span class="tag">Data updates</span><span class="tag">File management</span></div></article>
+<article class="card"><div class="card-icon">04</div><h3>Creative & Digital Support</h3><p>Assist with practical digital content and visual tasks for day-to-day business needs.</p><div class="tags"><span class="tag">Canva</span><span class="tag">CapCut</span><span class="tag">Social media</span><span class="tag">Content scheduling</span><span class="tag">Basic photo editing</span></div></article>
+</div>
+</div>
+</section>
+
+
+
+<section id="tools">
+  <div class="container tools-wrap">
+    <div class="tools-copy">
+      <div class="kicker">Tools & Insurance Systems</div>
+      <h2>Tools I use.</h2>
+      <p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms.</p>
+      <p><strong>Below are the core tools and insurance carrier platforms I've worked with.</strong></p>
+    </div>
+
+    <div class="tools-showcase">
+      <div class="tools-group">
+        <div class="tools-group-label">Agency, Productivity & Operations</div>
+        <div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
+          <div class="tool-track">
+            <div class="tool-row">
+              <div class="tool"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
+            </div>
+            <div class="tool-row" aria-hidden="true">
+              <div class="tool"><div class="tool-logo"><img src="tools/EZ.png" alt=""></div><strong>EZLynx</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/AZ.png" alt=""></div><strong>AgencyZoom</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Goo.png" alt=""></div><strong>Google Workspace</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Out.png" alt=""></div><strong>Outlook</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Teams.png" alt=""></div><strong>Microsoft Teams</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Sla.png" alt=""></div><strong>Slack</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Zoom.png" alt=""></div><strong>Zoom</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Can.png" alt=""></div><strong>Canva</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Cap.png" alt=""></div><strong>CapCut</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/gpt.png" alt=""></div><strong>ChatGPT</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools-group carriers-group">
+        <div class="tools-group-label">Insurance Carriers</div>
+        <div class="carrier-marquee" aria-label="Insurance carriers I have worked with"><div class="carrier-track"><div class="carrier-row"><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="Vault logo" class="carrier-logo-img"><span class="carrier-placeholder">Vault</span></div><strong>Vault</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div><div class="carrier-row" aria-hidden="true"><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Vault</span></div><strong>Vault</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="process">
+<div class="container">
+<div class="section-head"><div><div class="kicker">My Workflow</div><h2>Simple. Organized. Effective.</h2></div><p class="section-intro">I follow a clear process to keep tasks moving and deliver dependable work.</p></div>
+<div class="process-grid">
+<div class="step"><div class="step-number">01</div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
+<div class="step"><div class="step-number">02</div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
+<div class="step"><div class="step-number">03</div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
+<div class="step"><div class="step-number">04</div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
+<div class="step"><div class="step-number">05</div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<div class="section-head"><div><div class="kicker">Relevant Experience</div><h2>Experience I can bring to your team.</h2></div><p class="section-intro">My previous roles gave me experience across operations, customer support, documentation, communication, and technical problem-solving.</p></div>
+<div class="experience-list">
+<article class="experience"><div class="experience-meta">Oct 2022 – Mar 2027<br>Operations Support</div><div><h3>Lava Automation Corp.</h3><h4>The Weikum Group</h4><p>Supported day-to-day business operations through workflow coordination, documentation, client and partner communication, system updates, renewals, research, and digital content support.</p></div></article>
+<article class="experience"><div class="experience-meta">Feb 2021 – Aug 2022<br>Customer & Claims Support</div><div><h3>Teleperformance</h3><h4>BCBS Florida Blue</h4><p>Handled high-volume customer inquiries, claims concerns, escalations, email correspondence, and team support while serving as an interim team lead for a two-week period.</p></div></article>
+<article class="experience"><div class="experience-meta">Jul 2020 – Dec 2020<br>Technical Support</div><div><h3>VXI</h3><h4>Comcast/Xfinity Home</h4><p>Provided remote technical support for US-based customers, troubleshooting connectivity issues and maintaining detailed case documentation in a high-volume environment.</p></div></article>
+</div>
+</div>
+</section>
+
+<section class="expect">
+<div class="container">
+<div class="section-head"><div><div class="kicker">What You Can Expect</div><h2>A support partner who keeps learning.</h2></div><p class="section-intro">I bring transferable skills while staying open to new industries, tools, processes, and responsibilities.</p></div>
+<div class="expect-grid">
+<div class="expect-card"><h3>Dependable & Proactive</h3><p>I take ownership of assigned tasks and follow through.</p></div>
+<div class="expect-card"><h3>Quick Learner</h3><p>I adapt to new systems and workflows with curiosity.</p></div>
+<div class="expect-card"><h3>Clear Communicator</h3><p>I keep teammates and clients informed throughout the work.</p></div>
+<div class="expect-card"><h3>Professional & Respectful</h3><p>I value your time, processes, goals, and business.</p></div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="container">
+<div class="kicker">Let's Connect</div>
+<h2>Looking for someone reliable to help move the work forward?</h2>
+<p>I'm available to support insurance agencies with reliable operations, administrative, client service, and workflow assistance.</p>
+<div class="hero-actions" style="justify-content:center">
+  <a class="btn btn-primary" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener">Book a Call</a>
+  <a class="btn btn-secondary" href="mailto:chpaulcervantes@gmail.com">Email Me</a>
+  <a class="btn btn-secondary" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+<div class="contact-info">
+<span class="contact-chip">Davao City, Philippines</span>
+<span class="contact-chip">Remote Ready</span>
+<span class="contact-chip">Flexible Across US Time Zones</span>
+</div>
+</div>
+</section>
+</main>
+<footer>© 2026 Christian Paul Cervantes • Insurance Agency Operations Specialist</footer>
+
+<a class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener" aria-label="Book a call">
+  <span class="floating-book-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor">
+      <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h5v5H7v-5z"/>
+    </svg>
+  </span>
+  <span>Book a Call</span>
+</a>
+
+</body>
+</html>
