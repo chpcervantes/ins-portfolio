@@ -132,20 +132,9 @@ footer { font-size: 14px; }
   -webkit-mask-image:linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
 }
 
-.tool-track{
-  display:flex;
-  width:max-content;
-  gap:30px;
-  animation:toolsMarquee 30s linear infinite;
-  will-change:transform;
-}
+.tool-track{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%;transform:none;animation:none;will-change:auto}
 
-.tool-row{
-  display:flex;
-  width:max-content;
-  gap:30px;
-  flex-shrink:0;
-}
+.tool-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%}
 
 .tool{
   flex:0 0 172px;
@@ -422,19 +411,8 @@ footer { font-size: 14px; }
   mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
   -webkit-mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
 }
-.carrier-track{
-  display:flex;
-  width:max-content;
-  gap:22px;
-  will-change:transform;
-  animation:carrierMarquee 38s linear infinite;
-}
-.carrier-row{
-  display:flex;
-  width:max-content;
-  gap:22px;
-  flex-shrink:0;
-}
+.carrier-track{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%;animation:none;will-change:auto}
+.carrier-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%}
 .carrier-card{
   flex:0 0 160px;
   width:160px;
@@ -592,6 +570,49 @@ footer { font-size: 14px; }
     }
 
   </style>
+
+<style id="static-logo-rows">
+/* 1. Remove edge fading masks and allow visible overflow */
+.tool-grid,
+.carrier-marquee {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  overflow: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 0 !important;
+}
+
+/* 2. Remove fixed positioning and allow the tracks to wrap */
+.tool-track,
+.carrier-track {
+  position: static !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  transform: none !important;
+  animation: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+/* 3. Ensure the active rows wrap their contents naturally */
+.tool-row,
+.carrier-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  width: 100% !important;
+}
+
+/* 4. Hide the duplicate rows previously used for the continuous loop */
+.tool-row[aria-hidden="true"],
+.carrier-row[aria-hidden="true"] {
+  display: none !important;
+}
+</style>
+
 </head>
 <body>
 <header class="nav">
@@ -691,7 +712,7 @@ footer { font-size: 14px; }
               <div class="tool"><div class="tool-logo"><img src="tools/Cap.png" alt=""></div><strong>CapCut</strong></div>
               <div class="tool"><div class="tool-logo"><img src="tools/gpt.png" alt=""></div><strong>ChatGPT</strong></div>
               <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Adobe.png" alt=""></div><strong>Adobe Acrobat</strong></div>
+              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
             </div>
           </div>
         </div>
