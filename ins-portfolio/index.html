@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+============================================================
+WEB DEVELOPMENT MAP — QUICK GUIDE
+------------------------------------------------------------
+HTML  = the STRUCTURE/content of the page
+CSS   = the LOOK/layout/spacing/colors/animations
+JavaScript = the BEHAVIOR/interactivity
+
+MAIN PAGE AREAS
+01. <head>                 → page settings + fonts
+02. :root / global CSS    → reusable colors and variables
+03. Navigation             → top menu/header
+04. Hero                   → first section users see
+05. About                  → introduction + stats
+06. Services               → service cards
+07. Tools                  → software/tool logo cards
+08. Insurance Carriers     → carrier logo cards
+09. Workflow               → process/steps
+10. Experience             → work history cards
+11. What You Can Expect    → strengths/cards
+12. Contact                → call-to-action + contact buttons
+13. Floating Book a Call   → fixed button
+14. Animation CSS          → reusable visual effects
+15. Animation JavaScript   → scroll-triggered reveal behavior
+
+TIP:
+When learning, change ONE small rule at a time and refresh.
+For example:
+  color: red;          → changes a text/background color
+  padding: 20px;       → changes inside spacing
+  gap: 20px;           → changes space between flex/grid items
+  transform: translateY(-5px); → moves an element upward
+============================================================
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant.">
@@ -57,7 +91,9 @@ h2{margin:0;font-size:clamp(40px,5.5vw,62px);line-height:1.02;letter-spacing:-.0
 .card h3{margin:0 0 10px;}.card p{margin:0 0 17px;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:7px}.tag{background:#f3f1e3;color:var(--slate);border-radius:999px;font-weight:800}
 
-/* Tools wrap layout fixes */
+/* ============================================================
+   CSS 02 — TOOLS SECTION LAYOUT
+   ============================================================ */
 .tools-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
 .tools-copy {
   position: sticky;
@@ -117,7 +153,9 @@ footer { font-size: 14px; }
 
 
 /* ------------------------------------------- */
-/* Animated tools section & Layout Fixes       */
+/* ============================================================
+   CSS 03 — TOOL LOGO GRID + EQUAL-SIZE TOOL CARDS
+   ============================================================ */
 /* ------------------------------------------- */
 
 
@@ -182,11 +220,6 @@ footer { font-size: 14px; }
   color:var(--ink);
 }
 
-@keyframes toolsMarquee{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(calc(-50% - 15px))}
-}
-
 @media (max-width:900px){
   .tool{flex-basis:156px;width:156px;min-height:158px}
   .tool-logo{width:92px;height:92px}
@@ -217,12 +250,12 @@ footer { font-size: 14px; }
     transform:none;
   }
 }
-}
 
-}
 
 /* ------------------------------------------- */
-/* Floating Calendar Button                    */
+/* ============================================================
+   CSS 04 — FLOATING BOOK-A-CALL BUTTON
+   ============================================================ */
 /* ------------------------------------------- */
 .floating-cal {
   position: fixed;
@@ -292,7 +325,9 @@ footer { font-size: 14px; }
 }
 
 
-/* CP logo/photo placeholder */
+/* ============================================================
+   CSS 05 — NAVIGATION PROFILE / CP LOGO
+   ============================================================ */
 .brand-logo-placeholder{
   width:44px;
   height:44px;
@@ -344,51 +379,9 @@ footer { font-size: 14px; }
 .brand-logo-placeholder + *{vertical-align:middle}
 
 
-/* Center the tools marquee */
-.tool-grid{
-  display:block !important;
-  text-align:center;
-  overflow:hidden;
-  position:relative;
-  width:100%;
-}
-
-.tool-track{
-  width:max-content !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  justify-content:center;
-  position:relative;
-  left:50%;
-  transform:translateX(-50%);
-  animation:toolsMarqueeCentered 30s linear infinite !important;
-}
-
-@keyframes toolsMarqueeCentered{
-  0%{
-    transform:translateX(-50%);
-  }
-  100%{
-    transform:translateX(calc(-100% + 50vw));
-  }
-}
-
-@media (max-width:650px){
-  .tool-track{
-    animation-duration:26s !important;
-  }
-}
-
-@media (prefers-reduced-motion:reduce){
-  .tool-track{
-    animation:none !important;
-    transform:translateX(-50%) !important;
-  }
-}
-
-
-
-/* Insurance operations portfolio tool showcase */
+/* ============================================================
+   CSS 06 — INSURANCE TOOL + CARRIER SHOWCASE
+   ============================================================ */
 .tools-showcase{min-width:0}
 .tools-group + .tools-group{margin-top:34px}
 .tools-group-label{
@@ -473,10 +466,7 @@ footer { font-size: 14px; }
   line-height:1.15;
   color:var(--ink);
 }
-@keyframes carrierMarquee{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(calc(-50% - 11px))}
-}
+
 @media(max-width:900px){
   .carrier-card{flex-basis:146px;width:146px}
   .carrier-logo{width:106px;height:70px}
@@ -569,7 +559,9 @@ footer { font-size: 14px; }
       .floating-book-call{transition:none}
     }
 
-/* Adjust header spacing on mobile screens */
+/* ============================================================
+   CSS 07 — MOBILE HEADER ADJUSTMENTS
+   ============================================================ */
 @media (max-width: 650px) {
   .nav-inner {
     gap: 10px; /* Reduces space between your name and the button */
@@ -587,7 +579,9 @@ footer { font-size: 14px; }
 
 
   
-/* Typography update: DM Sans + Manrope */
+/* ============================================================
+   CSS 08 — TYPOGRAPHY: DM SANS + MANROPE
+   ============================================================ */
 body{
   font-family:"DM Sans",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
@@ -612,14 +606,16 @@ button,.btn,.nav-links,.nav-cta{
 
 
 /* ============================================================
-   PORTFOLIO ANIMATIONS — COPY/PASTE SECTION
+   CSS 09 — REUSABLE PORTFOLIO ANIMATIONS
    ------------------------------------------------------------
-   You can reuse this whole CSS block on another webpage.
-   1) Add class="reveal" to elements you want to animate in.
-   2) Add class="hover-lift" to cards.
-   3) Add class="tool-logo-animate" to tool/logo items.
-   4) Add class="float-soft" to an element for gentle floating.
-   5) Add class="btn-animate btn-animate" to buttons/links.
+   COPY/PASTE FRIENDLY:
+   • .reveal              = scroll-in animation
+   • .reveal-stagger      = children appear one after another
+   • .hover-lift          = card hover lift
+   • .tool-logo-animate   = tool/carrier hover effect
+   • .float-soft          = gentle floating animation
+   • .btn-animate         = button hover/press effect
+   • .profile-animate     = subtle image zoom
    ============================================================ */
 
 /* 1. SCROLL REVEAL — fade + slide upward */
@@ -724,45 +720,11 @@ button,.btn,.nav-links,.nav-cta{
 
 
 /* ============================================================
-   TOOL CARD SIZING FIX
+   CSS 10 — EQUAL-SIZE TOOL BOXES
    ------------------------------------------------------------
-   Forces every tool box to have the same width and height,
-   regardless of how long the tool name is.
-   ============================================================ */
-.tools-grid .tool-card{
-  width:100%;
-  min-width:0;
-  height:150px;
-  min-height:150px;
-  max-height:150px;
-  box-sizing:border-box;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.tools-grid .tool-card img,
-.tools-grid .tool-card .tool-logo{
-  max-width:72px;
-  max-height:72px;
-  object-fit:contain;
-}
-
-.tools-grid .tool-card .tool-name{
-  margin-top:12px;
-  line-height:1.2;
-  text-align:center;
-  max-width:100%;
-}
-
-
-/* ============================================================
-   TOOL BOX FIX — ACTUAL .tool ELEMENTS
-   ------------------------------------------------------------
-   The tool boxes in this page use class=".tool" (not
-   ".tool-card"). These rules force identical dimensions.
+   The HTML uses class=".tool". These rules force every tool
+   card to share the same width and height, even when the
+   name wraps onto two lines (for example Google Workspace).
    ============================================================ */
 .tool-row .tool{
   flex:0 0 172px !important;
@@ -877,6 +839,8 @@ button,.btn,.nav-links,.nav-cta{
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<!-- ==================== 03. NAVIGATION / HEADER ==================== -->
 <header class="nav">
 <div class="container nav-inner">
 <a class="brand" href="#top"><span class="brand-logo-placeholder"><img src="images/profile.jpg" alt="Christian Paul Cervantes"></span><span>Christian Paul Cervantes</span></a>
@@ -886,6 +850,8 @@ button,.btn,.nav-links,.nav-cta{
 </header>
 
 <main id="top">
+
+<!-- ==================== 04. HERO SECTION ==================== -->
 <section class="hero">
 <div class="container hero-grid">
 <div>
@@ -901,6 +867,8 @@ button,.btn,.nav-links,.nav-cta{
 </div>
 </section>
 
+
+<!-- ==================== 05. ABOUT SECTION ==================== -->
 <section id="about">
 <div class="container about">
 <div class="about-image"><img src="images/portrait.jpg" alt="Christian Paul Cervantes"></div>
@@ -919,6 +887,8 @@ button,.btn,.nav-links,.nav-cta{
 </div>
 </section>
 
+
+<!-- ==================== 06. SERVICES SECTION ==================== -->
 <section id="services" class="services">
 <div class="container">
 <div class="section-head"><div><div class="kicker">What I Do</div><h2>How I can help.</h2></div>
@@ -933,7 +903,7 @@ button,.btn,.nav-links,.nav-cta{
 </section>
 
 
-
+<!-- ==================== 07. TOOLS + INSURANCE CARRIERS ==================== -->
 <section id="tools">
   <div class="container tools-wrap">
     <div class="tools-copy">
@@ -950,34 +920,20 @@ button,.btn,.nav-links,.nav-cta{
         <div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
           <div class="tool-track">
             <div class="tool-row">
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
+              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
             </div>
-            <div class="tool-row" aria-hidden="true">
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt=""></div><strong>EZLynx</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt=""></div><strong>AgencyZoom</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt=""></div><strong>Google Workspace</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt=""></div><strong>Outlook</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt=""></div><strong>Microsoft Teams</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt=""></div><strong>Slack</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt=""></div><strong>Zoom</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt=""></div><strong>Canva</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt=""></div><strong>CapCut</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt=""></div><strong>ChatGPT</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
-              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
             </div>
-          </div>
         </div>
       </div>
 
@@ -1002,23 +958,6 @@ button,.btn,.nav-links,.nav-cta{
           <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
           <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
           
-          <div class="carrier-row" aria-hidden="true">
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
-            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
           </div>
         </div>
       </div>
@@ -1027,20 +966,22 @@ button,.btn,.nav-links,.nav-cta{
 </section>
 
 
-
+<!-- ==================== 08. WORKFLOW / PROCESS SECTION ==================== -->
 <section class="process">
 <div class="container">
 <div class="section-head"><div><div class="kicker">My Workflow</div><h2>Simple. Organized. Effective.</h2></div><p class="section-intro">I follow a clear process to keep tasks moving and deliver dependable work.</p></div>
 <div class="process-grid">
-<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">01</div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
-<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">02</div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
-<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">03</div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
-<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">04</div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
-<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">05</div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
+<div class="step hover-lift reveal"><div class="step-number">01</div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
+<div class="step hover-lift reveal"><div class="step-number">02</div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
+<div class="step hover-lift reveal"><div class="step-number">03</div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
+<div class="step hover-lift reveal"><div class="step-number">04</div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
+<div class="step hover-lift reveal"><div class="step-number">05</div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
 </div>
 </div>
 </section>
 
+
+<!-- ==================== 09. EXPERIENCE SECTION ==================== -->
 <section id="experience">
 <div class="container">
 <div class="section-head"><div><div class="kicker">Relevant Experience</div><h2>Experience I can bring to your team.</h2></div><p class="section-intro">My previous roles gave me experience across operations, customer support, documentation, communication, and technical problem-solving.</p></div>
@@ -1052,6 +993,8 @@ button,.btn,.nav-links,.nav-cta{
 </div>
 </section>
 
+
+<!-- ==================== 10. WHAT YOU CAN EXPECT ==================== -->
 <section class="expect">
 <div class="container">
 <div class="section-head"><div><div class="kicker">What You Can Expect</div><h2>A support partner who keeps learning.</h2></div><p class="section-intro">I bring transferable skills while staying open to new industries, tools, processes, and responsibilities.</p></div>
@@ -1064,6 +1007,8 @@ button,.btn,.nav-links,.nav-cta{
 </div>
 </section>
 
+
+<!-- ==================== 11. CONTACT / CTA SECTION ==================== -->
 <section id="contact" class="contact">
 <div class="container">
 <div class="kicker">Let's Connect</div>
@@ -1082,8 +1027,12 @@ button,.btn,.nav-links,.nav-cta{
 </div>
 </section>
 </main>
+
+<!-- ==================== 12. FOOTER ==================== -->
 <footer>© 2026 Christian Paul Cervantes • Insurance Agency Operations Specialist</footer>
 
+
+<!-- ==================== 13. FLOATING BOOK-A-CALL BUTTON ==================== -->
 <a class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener" aria-label="Book a call">
   <span class="floating-book-icon">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor">
@@ -1095,10 +1044,12 @@ button,.btn,.nav-links,.nav-cta{
 
 
 <!-- ============================================================
-     PORTFOLIO ANIMATIONS — JAVASCRIPT
+     JS 01 — SCROLL REVEAL / ANIMATION BEHAVIOR
      ------------------------------------------------------------
-     This activates the .reveal / .reveal-stagger classes.
-     You can copy this entire block to another webpage too.
+     CSS defines what the animation looks like.
+     JavaScript watches for elements entering the viewport
+     and adds the class "is-visible" to start the animation.
+     This block can be reused on another webpage.
      ============================================================ -->
 <script>
 /* Scroll Reveal: elements animate when they enter the viewport. */
@@ -1129,5 +1080,20 @@ button,.btn,.nav-links,.nav-cta{
 })();
 </script>
 
+
+<!-- ============================================================
+     WEB DEV LEARNING NOTE
+     ------------------------------------------------------------
+     When you edit this page:
+     1. HTML changes WHAT exists.
+     2. CSS changes HOW it looks.
+     3. JavaScript changes HOW it behaves.
+
+     Example:
+       <div class="tool">...</div>   ← HTML creates the card
+       .tool { ... }                 ← CSS styles the card
+       .reveal.is-visible { ... }    ← CSS defines the shown state
+       classList.add("is-visible")   ← JavaScript activates it
+     ============================================================ -->
 </body>
 </html>
