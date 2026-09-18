@@ -12,7 +12,7 @@
   --shadow:0 20px 60px rgba(49,54,71,.12);--radius:24px;--max:1160px;
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
+body{margin:0;color:var(--ink);background:var(--cream);font-family:"DM Sans",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .container{width:min(calc(100% - 40px),var(--max));margin:auto}
 .nav{position:sticky;top:0;z-index:50;background:rgba(255,248,212,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -585,7 +585,250 @@ footer { font-size: 14px; }
   }
 }
 
-  </style>
+
+  
+/* Typography update: DM Sans + Manrope */
+body{
+  font-family:"DM Sans",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+h1,h2{
+  font-family:"Manrope","DM Sans",ui-sans-serif,system-ui,sans-serif;
+  font-weight:800;
+  letter-spacing:-.045em;
+}
+h3,h4{
+  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  font-weight:700;
+}
+.kicker,.eyebrow{
+  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+button,.btn,.nav-links,.nav-cta{
+  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  font-weight:700;
+}
+
+
+/* ============================================================
+   PORTFOLIO ANIMATIONS — COPY/PASTE SECTION
+   ------------------------------------------------------------
+   You can reuse this whole CSS block on another webpage.
+   1) Add class="reveal" to elements you want to animate in.
+   2) Add class="hover-lift" to cards.
+   3) Add class="tool-logo-animate" to tool/logo items.
+   4) Add class="float-soft" to an element for gentle floating.
+   5) Add class="btn-animate btn-animate" to buttons/links.
+   ============================================================ */
+
+/* 1. SCROLL REVEAL — fade + slide upward */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* 2. STAGGERED REVEAL — children appear one after another */
+.reveal-stagger > *{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.reveal-stagger.is-visible > *{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-stagger.is-visible > *:nth-child(1){transition-delay:.05s}
+.reveal-stagger.is-visible > *:nth-child(2){transition-delay:.12s}
+.reveal-stagger.is-visible > *:nth-child(3){transition-delay:.19s}
+.reveal-stagger.is-visible > *:nth-child(4){transition-delay:.26s}
+.reveal-stagger.is-visible > *:nth-child(5){transition-delay:.33s}
+.reveal-stagger.is-visible > *:nth-child(6){transition-delay:.40s}
+
+/* 3. CARD HOVER LIFT */
+.hover-lift{
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .hover-lift:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(49,54,71,.16);
+  }
+}
+
+/* 4. TOOL/LOGO HOVER */
+.tool-logo-animate{
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .tool-logo-animate:hover{
+    transform:translateY(-6px) scale(1.04);
+    box-shadow:0 12px 28px rgba(49,54,71,.14);
+  }
+}
+
+/* 5. OPTIONAL GENTLE FLOAT */
+.float-soft{
+  animation:softFloat 4s ease-in-out infinite;
+}
+@keyframes softFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+
+/* 6. BUTTON MICRO-INTERACTION */
+.btn-animate{
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .btn-animate:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(49,54,71,.18);
+  }
+}
+.btn-animate:active{
+  transform:translateY(0) scale(.98);
+}
+
+/* 7. PROFILE IMAGE HOVER */
+.profile-animate{
+  transition:transform .5s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .profile-animate:hover{
+    transform:scale(1.025);
+  }
+}
+
+/* 8. RESPECT USERS WHO PREFER LESS MOTION */
+@media (prefers-reduced-motion:reduce){
+  .reveal,
+  .reveal-stagger > *,
+  .hover-lift,
+  .tool-logo-animate,
+  .btn-animate,
+  .profile-animate{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+  .float-soft{
+    animation:none;
+  }
+}
+
+
+/* ============================================================
+   TOOL CARD SIZING FIX
+   ------------------------------------------------------------
+   Forces every tool box to have the same width and height,
+   regardless of how long the tool name is.
+   ============================================================ */
+.tools-grid .tool-card{
+  width:100%;
+  min-width:0;
+  height:150px;
+  min-height:150px;
+  max-height:150px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.tools-grid .tool-card img,
+.tools-grid .tool-card .tool-logo{
+  max-width:72px;
+  max-height:72px;
+  object-fit:contain;
+}
+
+.tools-grid .tool-card .tool-name{
+  margin-top:12px;
+  line-height:1.2;
+  text-align:center;
+  max-width:100%;
+}
+
+
+/* ============================================================
+   TOOL BOX FIX — ACTUAL .tool ELEMENTS
+   ------------------------------------------------------------
+   The tool boxes in this page use class=".tool" (not
+   ".tool-card"). These rules force identical dimensions.
+   ============================================================ */
+.tool-row .tool{
+  flex:0 0 172px !important;
+  width:172px !important;
+  height:172px !important;
+  min-height:172px !important;
+  max-height:172px !important;
+  box-sizing:border-box;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.tool-row .tool-logo{
+  width:104px !important;
+  height:104px !important;
+  flex:0 0 104px;
+  margin-bottom:12px;
+}
+
+.tool-row .tool strong{
+  width:100%;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.2;
+}
+
+/* Keep the boxes equal at the existing responsive breakpoints. */
+@media (max-width:900px){
+  .tool-row .tool{
+    flex-basis:156px !important;
+    width:156px !important;
+    height:158px !important;
+    min-height:158px !important;
+    max-height:158px !important;
+  }
+  .tool-row .tool-logo{
+    width:92px !important;
+    height:92px !important;
+    flex-basis:92px;
+  }
+}
+
+@media (max-width:650px){
+  .tool-row .tool{
+    flex-basis:136px !important;
+    width:136px !important;
+    height:142px !important;
+    min-height:142px !important;
+    max-height:142px !important;
+    padding:14px 10px !important;
+  }
+  .tool-row .tool-logo{
+    width:80px !important;
+    height:80px !important;
+    flex-basis:80px;
+    margin-bottom:9px;
+  }
+  .tool-row .tool strong{
+    min-height:32px;
+    font-size:14px !important;
+  }
+}
+
+</style>
 
 <style id="static-logo-rows">
 /* 1. Remove edge fading masks and allow visible overflow */
@@ -629,13 +872,16 @@ footer { font-size: 14px; }
 }
 </style>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="nav">
 <div class="container nav-inner">
 <a class="brand" href="#top"><span class="brand-logo-placeholder"><img src="images/profile.jpg" alt="Christian Paul Cervantes"></span><span>Christian Paul Cervantes</span></a>
 <nav class="nav-links"><a href="#about">About</a><a href="#services">Services</a><a href="#tools">Tools</a><a href="#experience">Experience</a></nav>
-<a class="nav-cta" href="#contact">Let's Connect</a>
+<a class="nav-cta btn-animate" href="#contact">Let's Connect</a>
 </div>
 </header>
 
@@ -646,7 +892,7 @@ footer { font-size: 14px; }
 <div class="eyebrow">Insurance Agency Operations Specialist • Virtual Assistant</div>
 <h1>Reliable operations support for insurance agencies.</h1>
 <p class="hero-copy">I support insurance agencies with day-to-day operations, client service, policy workflows, documentation, renewals, system management, and administrative coordination.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="#services">Explore My Services</a><a class="btn btn-secondary" href="#contact">Work With Me</a></div>
+<div class="hero-actions"><a class="btn btn-primary btn-animate" href="#services">Explore My Services</a><a class="btn btn-secondary btn-animate" href="#contact">Work With Me</a></div>
 </div>
 <div class="photo-card">
 <img src="images/profile.jpg" alt="Christian Paul Cervantes professional portrait">
@@ -693,8 +939,9 @@ footer { font-size: 14px; }
     <div class="tools-copy">
       <div class="kicker">Tools & Insurance Systems</div>
       <h2>Tools I use.</h2>
-      <p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms.</p>
-      <p><strong>Below are the core tools and insurance carrier platforms I've worked with.</strong></p>
+      <p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms to keep day-to-day business operations organized, efficient, and running smoothly.
+        To deliver reliable support and maintain seamless communication across teams, clients, and partners, I regularly utilize industry-standard software and systems.</p>
+      <p><strong>These are the core tools and insurance carrier platforms I've worked with.</strong></p>
     </div>
 
     <div class="tools-showcase">
@@ -703,32 +950,32 @@ footer { font-size: 14px; }
         <div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
           <div class="tool-track">
             <div class="tool-row">
-              <div class="tool"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
             </div>
             <div class="tool-row" aria-hidden="true">
-              <div class="tool"><div class="tool-logo"><img src="tools/EZ.png" alt=""></div><strong>EZLynx</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/AZ.png" alt=""></div><strong>AgencyZoom</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Goo.png" alt=""></div><strong>Google Workspace</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Out.png" alt=""></div><strong>Outlook</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Teams.png" alt=""></div><strong>Microsoft Teams</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Sla.png" alt=""></div><strong>Slack</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Zoom.png" alt=""></div><strong>Zoom</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Can.png" alt=""></div><strong>Canva</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Cap.png" alt=""></div><strong>CapCut</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/gpt.png" alt=""></div><strong>ChatGPT</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
-              <div class="tool"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt=""></div><strong>EZLynx</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt=""></div><strong>AgencyZoom</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt=""></div><strong>Google Workspace</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt=""></div><strong>Outlook</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt=""></div><strong>Microsoft Teams</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt=""></div><strong>Slack</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt=""></div><strong>Zoom</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt=""></div><strong>Canva</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt=""></div><strong>CapCut</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt=""></div><strong>ChatGPT</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
+              <div class="tool hover-lift tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt=""></div><strong>Notion</strong></div>
             </div>
           </div>
         </div>
@@ -736,7 +983,44 @@ footer { font-size: 14px; }
 
       <div class="tools-group carriers-group">
         <div class="tools-group-label">Insurance Carriers</div>
-        <div class="carrier-marquee" aria-label="Insurance carriers I have worked with"><div class="carrier-track"><div class="carrier-row"><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="Vault logo" class="carrier-logo-img"><span class="carrier-placeholder">Vault</span></div><strong>Vault</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div><div class="carrier-row" aria-hidden="true"><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Vault</span></div><strong>Vault</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div><div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div></div></div>
+        <div class="carrier-marquee" aria-label="Insurance carriers I have worked with">
+          <div class="carrier-track"><div class="carrier-row">
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
+          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
+          
+          <div class="carrier-row" aria-hidden="true">
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/vault.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
+            <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -748,11 +1032,11 @@ footer { font-size: 14px; }
 <div class="container">
 <div class="section-head"><div><div class="kicker">My Workflow</div><h2>Simple. Organized. Effective.</h2></div><p class="section-intro">I follow a clear process to keep tasks moving and deliver dependable work.</p></div>
 <div class="process-grid">
-<div class="step"><div class="step-number">01</div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
-<div class="step"><div class="step-number">02</div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
-<div class="step"><div class="step-number">03</div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
-<div class="step"><div class="step-number">04</div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
-<div class="step"><div class="step-number">05</div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
+<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">01</div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
+<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">02</div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
+<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">03</div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
+<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">04</div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
+<div class="step hover-lift reveal"><div class="step-number hover-lift reveal">05</div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
 </div>
 </div>
 </section>
@@ -772,10 +1056,10 @@ footer { font-size: 14px; }
 <div class="container">
 <div class="section-head"><div><div class="kicker">What You Can Expect</div><h2>A support partner who keeps learning.</h2></div><p class="section-intro">I bring transferable skills while staying open to new industries, tools, processes, and responsibilities.</p></div>
 <div class="expect-grid">
-<div class="expect-card"><h3>Dependable & Proactive</h3><p>I take ownership of assigned tasks and follow through.</p></div>
-<div class="expect-card"><h3>Quick Learner</h3><p>I adapt to new systems and workflows with curiosity.</p></div>
-<div class="expect-card"><h3>Clear Communicator</h3><p>I keep teammates and clients informed throughout the work.</p></div>
-<div class="expect-card"><h3>Professional & Respectful</h3><p>I value your time, processes, goals, and business.</p></div>
+<div class="expect-card hover-lift reveal"><h3>Dependable & Proactive</h3><p>I take ownership of assigned tasks and follow through.</p></div>
+<div class="expect-card hover-lift reveal"><h3>Quick Learner</h3><p>I adapt to new systems and workflows with curiosity.</p></div>
+<div class="expect-card hover-lift reveal"><h3>Clear Communicator</h3><p>I keep teammates and clients informed throughout the work.</p></div>
+<div class="expect-card hover-lift reveal"><h3>Professional & Respectful</h3><p>I value your time, processes, goals, and business.</p></div>
 </div>
 </div>
 </section>
@@ -786,9 +1070,9 @@ footer { font-size: 14px; }
 <h2>Looking for someone reliable to help move the work forward?</h2>
 <p>I'm available to support insurance agencies with reliable operations, administrative, client service, and workflow assistance.</p>
 <div class="hero-actions" style="justify-content:center">
-  <a class="btn btn-primary" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener">Book a Call</a>
-  <a class="btn btn-secondary" href="mailto:chpaulcervantes@gmail.com">Email Me</a>
-  <a class="btn btn-secondary" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="btn btn-primary btn-animate" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener">Book a Call</a>
+  <a class="btn btn-secondary btn-animate" href="mailto:chpaulcervantes@gmail.com">Email Me</a>
+  <a class="btn btn-secondary btn-animate" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" target="_blank" rel="noopener">LinkedIn</a>
 </div>
 <div class="contact-info">
 <span class="contact-chip">Davao City, Philippines</span>
@@ -808,6 +1092,42 @@ footer { font-size: 14px; }
   </span>
   <span>Book a Call</span>
 </a>
+
+
+<!-- ============================================================
+     PORTFOLIO ANIMATIONS — JAVASCRIPT
+     ------------------------------------------------------------
+     This activates the .reveal / .reveal-stagger classes.
+     You can copy this entire block to another webpage too.
+     ============================================================ -->
+<script>
+/* Scroll Reveal: elements animate when they enter the viewport. */
+(function () {
+  const animatedItems = document.querySelectorAll('.reveal, .reveal-stagger');
+
+  if (!animatedItems.length) return;
+
+  /* Respect accessibility settings automatically. */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animatedItems.forEach(item => item.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  animatedItems.forEach(item => observer.observe(item));
+})();
+</script>
 
 </body>
 </html>
