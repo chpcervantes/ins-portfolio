@@ -241,7 +241,7 @@ p{
   position:relative;
   overflow:hidden;
   padding:105px 0 94px;
-  background:radial-gradient(circle at 82% 8%,rgba(169,0,0,.30),transparent 27%),var(--charcoal);
+  background:solid (circle at 82% 8%,rgba(169,0,0,.30),transparent 7%),var(--charcoal);
   border-bottom:1px solid var(--line);
 }
 .hero:after{
@@ -253,7 +253,7 @@ p{
   top:-210px;
   border-radius:50%;
   background:var(--red);
-  opacity:.12;
+  opacity:.20;
 }
 .hero-grid{
   position:relative;
@@ -511,7 +511,7 @@ Same naming pattern as the GenVA file:
   flex:0 0 104px;
   padding:12px;
   margin-bottom:12px;
-  background:var(--cream);
+  background:#ffffff;
   border:1px solid rgba(169,0,0,.28);
   border-radius:16px;
   display:grid;
@@ -587,7 +587,7 @@ Same naming pattern as the GenVA file:
   height:70px;
   margin-bottom:7px;
   padding:8px;
-  background:var(--cream);
+  background:#ffffff;
   border:1px solid rgba(169,0,0,.28);
   border-radius:12px;
   display:grid;
@@ -831,6 +831,7 @@ EmailJS reads the name="" value from each field.
   border:1px solid var(--line);
   border-radius:3px;
   box-shadow:var(--shadow);
+  border-top:4px solid var(--red);
 }
 
 .contact-message-heading{
@@ -1481,24 +1482,24 @@ The Calendly calendar is intentionally NOT embedded.
 
         <a
           class="btn btn-primary btn-animate contact-email"
+          href="https://calendly.com/chpaulcervantes/30min"
+          target="_blank"
+          rel="noopener">
+          Book a Call
+        </a>
+
+        <a
+          class="btn btn-secondary btn-animate contact-book-call"
           href="mailto:chpaulcervantes@gmail.com">
           Email Me
         </a>
 
-        <a
+         <a
           class="btn btn-secondary btn-animate contact-linkedin"
           href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/"
           target="_blank"
           rel="noopener">
           LinkedIn
-        </a>
-
-        <a
-          class="btn btn-secondary btn-animate contact-book-call"
-          href="https://calendly.com/chpaulcervantes/30min"
-          target="_blank"
-          rel="noopener">
-          Book a Call
         </a>
 
       </div>
