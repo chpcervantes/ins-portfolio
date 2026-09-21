@@ -4,6 +4,25 @@
 <!--
 ============================================================
 WEB DEVELOPMENT MAP — QUICK GUIDE
+
+HOW TO STUDY THIS FILE
+------------------------------------------------------------
+1. HTML = what appears on the page.
+2. CSS = how those things look and where they sit.
+3. JavaScript = what happens after the page loads or when you interact.
+4. A CLASS (example: class="tool") is a reusable label used by CSS/JS.
+5. An ID (example: id="contact") identifies one specific element/section.
+6. CSS variables in :root let you change a color/size once and reuse it.
+7. Comments like this one do NOT appear on the website. They are notes for you.
+
+SAFE LEARNING METHOD
+------------------------------------------------------------
+Change ONE property at a time, save, refresh, and observe the result.
+Use Ctrl+F to search for the section/class you want to edit.
+If you break something, undo with Ctrl+Z.
+============================================================
+
+WEB DEVELOPMENT MAP — QUICK GUIDE
 ------------------------------------------------------------
 HTML  = the STRUCTURE/content of the page
 CSS   = the LOOK/layout/spacing/colors/animations
@@ -21,18 +40,21 @@ MAIN PAGE AREAS
 09. Workflow               → process/steps
 10. Experience             → work history cards
 11. What You Can Expect    → strengths/cards
-12. Contact                → call-to-action + contact buttons
+12. Contact / Calendly     → call-to-action + booking calendar
 13. Floating Book a Call   → fixed button
-14. Animation CSS          → reusable visual effects
-15. Animation JavaScript   → scroll-triggered reveal behavior
+14. Floating Book a Call   → fixed booking button
+15. Footer                  → closing page information
+16. Animation CSS           → reusable visual effects
+17. Responsive CSS         → tablet/mobile behavior
+18. Animation JavaScript   → scroll-triggered reveal behavior
 
 TIP:
 When learning, change ONE small rule at a time and refresh.
 For example:
-  color: red;          → changes a text/background color
-  padding: 20px;       → changes inside spacing
-  gap: 20px;           → changes space between flex/grid items
-  transform: translateY(-5px); → moves an element upward
+color: red;          → changes a text/background color
+padding: 20px;       → changes inside spacing
+gap: 20px;           → changes space between flex/grid items
+transform: translateY(-5px); → moves an element upward
 ============================================================
 -->
 <meta charset="UTF-8">
@@ -40,1053 +62,1066 @@ For example:
 <meta name="description" content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant.">
 <title>Christian Paul Cervantes | Insurance Agency Operations Specialist</title>
 <style>
+
+/* =========================================================
+01. DESIGN TOKENS
+Change the values here to update the whole website.
+========================================================= */
 :root{
-  --navy:#313647;--slate:#435663;--sage:#a3b087;--cream:#fff8d4;
-  --white:#fff;--ink:#202431;--muted:#68717d;--line:rgba(49,54,71,.13);
-  --shadow:0 20px 60px rgba(49,54,71,.12);--radius:24px;--max:1160px;
+  --charcoal:#111111;
+  --red:#A90000;
+  --cream:#F1ECE3;
+  --taupe:#B7B0A5;
+  --graphite:#292929;
+  --white:#F1ECE3;
+  --line:rgba(241,236,227,.16);
+  --shadow:0 22px 55px rgba(0,0,0,.30);
+  --radius:22px;
+  --max-width:1180px;
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:var(--cream);font-family:"DM Sans",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-.container{width:min(calc(100% - 40px),var(--max));margin:auto}
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,248,212,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}
-.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--navy);color:var(--cream);display:grid;place-items:center;font-size:14px}
-.nav-links{display:flex;gap:24px;color:var(--slate);font-weight:700}
-.nav-links a:hover{color:var(--navy)}.nav-cta{padding:11px 17px;border-radius:999px;background:var(--navy);color:#fff;font-weight:800;}
-
-.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:80px 0 76px}
-.hero:after{content:"";position:absolute;width:500px;height:500px;right:-180px;top:-210px;border-radius:50%;background:var(--sage);opacity:.22}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr .82fr;align-items:center;gap:70px}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cream);font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px}
-.eyebrow:before{content:"";width:28px;height:2px;background:var(--sage)}
-h1{font-size:clamp(54px,8vw,92px);line-height:.98;letter-spacing:-.065em;margin:0 0 24px}
-.hero-copy{color:rgba(255,255,255,.78);margin-bottom:30px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:999px;font-weight:800;border:1px solid transparent}
-.btn-primary{background:var(--cream);color:var(--navy)}.btn-secondary{border-color:rgba(255,255,255,.25);color:#fff}
-
-.photo-card{position:relative;min-height:500px;border-radius:34px;background:var(--slate);padding:13px;transform:rotate(1deg);box-shadow:0 28px 80px rgba(0,0,0,.25)}
-.photo-card:before{content:"";position:absolute;inset:12px;border-radius:25px;background:linear-gradient(145deg,rgba(163,176,135,.32),transparent 45%);pointer-events:none;z-index:2}
-.photo-card img{width:100%;height:474px;object-fit:cover;object-position:center 30%;border-radius:25px;filter:brightness(1.08) contrast(1.04) saturate(.92)}
-.photo-label{position:absolute;z-index:3;bottom:28px;left:28px;padding:10px 14px;border-radius:999px;background:rgba(49,54,71,.82);backdrop-filter:blur(8px);font-weight:800;color:var(--cream)}
-
-section{padding:96px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}
-.kicker{color:var(--slate);text-transform:uppercase;letter-spacing:.13em;font-weight:900;margin-bottom:9px}
-h2{margin:0;font-size:clamp(40px,5.5vw,62px);line-height:1.02;letter-spacing:-.05em}
-.section-intro{color:var(--muted)}
-
-.about{display:grid;grid-template-columns:.82fr 1.18fr;gap:70px;align-items:center}
-.about-image{min-height:440px;border-radius:var(--radius);background:var(--sage);padding:14px;overflow:hidden}
-.about-image img{height:410px;width:100%;object-fit:cover;object-position:center 28%;border-radius:18px;filter:brightness(1.06) contrast(1.03) saturate(.9)}
-.about-copy p{color:var(--muted);}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
-.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{color:var(--muted);font-size:12px;font-weight:700}
-
-.services{background:#fff}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff;transition:.25s}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.card-icon{width:48px;height:48px;border-radius:15px;background:var(--cream);color:var(--navy);display:grid;place-items:center;font-weight:900;margin-bottom:22px}
-.card h3{margin:0 0 10px;}.card p{margin:0 0 17px;color:var(--muted)}
-.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{background:#f3f1e3;color:var(--slate);border-radius:999px;font-weight:800}
-
-/* ============================================================
-   CSS 02 — TOOLS SECTION LAYOUT
-   ============================================================ */
-.tools-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
-.tools-copy {
-  position: sticky;
-  top: 120px; /* Makes the text follow you as you scroll past the tools */
+/* =========================================================
+02. GLOBAL STYLES
+========================================================= */
+*{
+  box-sizing:border-box;
 }
-.tools-copy p{color:var(--muted)}
-.logo-note { display: none; } /* Removes invisible gap */
-
-.process{background:var(--slate);color:#fff}.process .kicker{color:var(--cream)}.process .section-intro{color:rgba(255,255,255,.7)}
-.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.step{padding:24px 18px;border-top:2px solid var(--sage);background:rgba(255,255,255,.045);border-radius:0 0 18px 18px}
-.step-number{color:var(--sage);font-weight:900;font-size:12px}.step h3{margin:28px 0 8px}.step p{margin:0;color:rgba(255,255,255,.65);}
-
-.experience-list{display:grid;gap:16px}.experience{display:grid;grid-template-columns:190px 1fr;gap:35px;padding:30px;border-radius:var(--radius);background:#fff;border:1px solid var(--line)}
-.experience-meta{color:var(--muted);}.experience h3{margin:0 0 4px;}.experience h4{margin:0 0 14px;color:var(--slate)}.experience p{margin:0;color:var(--muted)}
-
-.expect{background:#eef0df}.expect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.expect-card{padding:24px;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:20px}.expect-card h3{margin:0 0 7px;}.expect-card p{margin:0;color:var(--muted);}
-
-.contact{background:var(--navy);color:#fff;text-align:center}.contact .kicker{color:var(--sage)}.contact h2{max-width:760px;margin:auto}.contact p{margin:18px auto 28px;color:rgba(255,255,255,.72)}
-.contact-info{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}.contact-chip{border:1px solid rgba(255,255,255,.18);border-radius:999px;color:rgba(255,255,255,.8);}
-footer{padding:25px 0 100px 0;background:var(--navy);color:rgba(255,255,255,.55);border-top:1px solid rgba(255,255,255,.1);text-align:center} /* Added bottom padding so footer isn't hidden by calendar button */
-
-@media(max-width:900px){
-.nav-links{display:none}
-.hero-grid,.about{grid-template-columns:1fr}
-.tools-wrap{grid-template-columns:1fr; gap:30px} /* Shrunk massive gap for mobile */
-.hero{padding-top:70px}
-.photo-card{max-width:520px;width:100%;margin:auto}
-.process-grid{grid-template-columns:repeat(2,1fr)}
-.tools-copy {position: static;} /* Turns off sticky on mobile where it breaks flow */
+html{
+  scroll-behavior:smooth;
 }
-@media(max-width:650px){
-.container{width:min(calc(100% - 28px),var(--max))}section{padding:70px 0}
-.cards,.stats,.expect-grid{grid-template-columns:1fr}.experience{grid-template-columns:1fr;gap:15px}
-.process-grid{grid-template-columns:1fr}.section-head{display:block}.section-intro{margin-top:16px}
-.hero-actions .btn{width:100%}.photo-card{min-height:390px}.photo-card img{height:364px}
+body{
+  margin:0;
+  background:var(--charcoal);
+  color:var(--cream);
+  font-family:"DM Sans",sans-serif;
+  font-size:17px;
+  line-height:1.65;
 }
-
-/* ------------------------------------------- */
-/* Typography & Readability Improvements       */
-/* ------------------------------------------- */
-body { font-size: 17px; }
-.nav-links, .nav-cta, .btn { font-size: 16px; }
-.eyebrow { font-size: 14px; }
-.hero-copy { font-size: 22px; max-width: 700px; }
-.photo-label { font-size: 14px; }
-.kicker { font-size: 14px; }
-.section-intro { font-size: 18px; max-width: 600px; }
-.about-copy p, .tools-copy p, .contact p { font-size: 18px; }
-.card h3, .experience h3 { font-size: 24px; }
-.card p, .experience p, .expect-card p, .step p { font-size: 16px; }
-.tag { font-size: 13px; padding: 7px 12px; }
-.step h3, .expect-card h3, .experience h4 { font-size: 20px; }
-.experience-meta { font-size: 15px; }
-.contact-chip { font-size: 15px; padding: 12px 18px; }
-footer { font-size: 14px; }
-
-
-/* ------------------------------------------- */
-/* ============================================================
-   CSS 03 — TOOL LOGO GRID + EQUAL-SIZE TOOL CARDS
-   ============================================================ */
-/* ------------------------------------------- */
-
-
-.tool-grid{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-  padding:18px 0 28px;
-  display:flex;
-  justify-content:center;
-  mask-image:linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image:linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
+a{
+  color:inherit;
+  text-decoration:none;
 }
-
-.tool-track{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%;transform:none;animation:none;will-change:auto}
-
-.tool-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%}
-
-.tool{
-  flex:0 0 172px;
-  width:172px;
-  min-height:172px;
-  padding:18px 14px 16px;
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  box-shadow:0 12px 34px rgba(49,54,71,.09);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-
-.tool:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 42px rgba(49,54,71,.15);
-}
-
-.tool-logo{
-  width:104px;
-  height:104px;
-  background:#fff;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  margin-bottom:12px;
-}
-
-.tool-logo img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+img{
+  max-width:100%;
   display:block;
 }
-
-.tool strong{
-  font-size:16px;
-  line-height:1.2;
-  color:var(--ink);
+.container{
+  width:min(calc(100% - 48px),var(--max-width));
+  margin:auto;
 }
-
-@media (max-width:900px){
-  .tool{flex-basis:156px;width:156px;min-height:158px}
-  .tool-logo{width:92px;height:92px}
-  .tool-track,.tool-row{gap:24px}
+section{
+  padding:104px 0;
+  background:var(--charcoal);
 }
-
-@media (max-width:650px){
-  .tool-grid{
-    padding:14px 0 22px;
-    mask-image:none;
-    -webkit-mask-image:none;
-  }
-  .tool-track{gap:18px;animation-duration:26s}
-  .tool-row{gap:18px}
-  .tool{
-    flex-basis:136px;
-    width:136px;
-    min-height:142px;
-    padding:14px 10px;
-  }
-  .tool-logo{width:80px;height:80px;margin-bottom:9px}
-  .tool strong{font-size:14px}
+/* =========================================================
+03. TYPOGRAPHY
+DM Sans = body/interface text
+Cormorant Garamond = large editorial headings
+========================================================= */
+h1,h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:600;
+  letter-spacing:-.045em;
 }
-
-@media (prefers-reduced-motion:reduce){
-  .tool-track{
-    animation:none;
-    transform:none;
-  }
+h1{
+  max-width:720px;
+  margin:0 0 28px;
+  font-size:clamp(4.1rem,8vw,7.4rem);
+  line-height:.86;
 }
-
-
-/* ------------------------------------------- */
-/* ============================================================
-   CSS 04 — FLOATING BOOK-A-CALL BUTTON
-   ============================================================ */
-/* ------------------------------------------- */
-.floating-cal {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  background: var(--navy);
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 16px;
-  box-shadow: 0 12px 30px rgba(49, 54, 71, 0.3);
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+h2{
+  margin:0;
+  font-size:clamp(3.2rem,5vw,5.2rem);
+  line-height:.92;
 }
-.floating-cal:hover {
-  transform: translateY(-5px) scale(1.02);
-  background: var(--slate);
-  box-shadow: 0 16px 40px rgba(49, 54, 71, 0.4);
+h3,h4{
+  font-family:"DM Sans",sans-serif;
+  font-weight:700;
 }
-.floating-cal svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
+p{
+  margin-top:0;
 }
-
-@media(max-width: 650px) {
-  .floating-cal {
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 18px;
-    font-size: 15px;
-  }
-
-  /* Mobile: make the photo label fit the photo width */
-.photo-label {
-  left: 50%;
-  right: auto;
-  bottom: 20px;
-  width: calc(100% - 40px);
-  max-width: 90%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: clamp(11px, 3.2vw, 14px);
-  line-height: 1.2;
-  padding: 9px 12px;
-  white-space: normal;
-  box-sizing: border-box;
+.kicker,.eyebrow,.tools-group-label{
+  color:var(--taupe);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
 }
+.kicker{
+  margin-bottom:14px;
 }
-
-/* Keep the Let's connect area centered on desktop and mobile */
-#contact,
-#connect,
-.lets-connect,
-.connect-section,
-.connect-wrap{
-  text-align:center;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:18px;
 }
-
-#contact .container,
-#connect .container,
-.lets-connect .container,
-.connect-section .container,
-.connect-wrap{
-  margin-left:auto;
-  margin-right:auto;
-  text-align:center;
+.eyebrow:before{
+  content:"";
+  width:32px;
+  height:2px;
+  background:var(--red);
 }
-
-@media (max-width:650px){
-  #contact,
-  #connect,
-  .lets-connect,
-  .connect-section,
-  .connect-wrap{
-    text-align:center;
-  }
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:30px;
+  margin-bottom:36px;
 }
-
-
-/* ============================================================
-   CSS 05 — NAVIGATION PROFILE / CP LOGO
-   ============================================================ */
+.section-intro{
+  max-width:600px;
+  color:var(--taupe);
+  font-size:18px;
+}
+/* =========================================================
+04. HEADER / NAVIGATION
+========================================================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(17,17,17,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--cream);
+  font-weight:600;
+  letter-spacing:-.02em;
+}
 .brand-logo-placeholder{
   width:44px;
   height:44px;
   flex:0 0 44px;
-  border-radius:12px;
-  background:var(--white);
-  border:1px solid var(--line);
-  display:grid;
-  place-items:center;
+  border:1px solid rgba(169,0,0,.75);
+  border-radius:50%;
+  background:var(--graphite);
   overflow:hidden;
-  margin-right:10px;
 }
-    .brand-logo-placeholder{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      overflow:hidden;
-      flex:0 0 44px;
-      background:var(--white);
-      border:1px solid var(--line);
-      box-shadow:0 6px 18px rgba(49,54,71,.10);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .brand-logo-placeholder img{
-      display:block;
-      width:100%;
-      height:100%;
-      max-width:none;
-      object-fit:cover;
-      object-position:center center;
-      border-radius:50%;
-    }
-
 .brand-logo-placeholder img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
-
-/* If the placeholder image doesn't exist yet, keep the slot visibly ready for replacement. */
-.brand-logo-placeholder img[src="images/cp-logo-placeholder.png"]{
-  background:linear-gradient(135deg,var(--sage),var(--cream));
+.nav-links{
+  display:flex;
+  gap:27px;
+  color:var(--taupe);
+  font-weight:500;
 }
-
-
-.brand-logo-placeholder + *{vertical-align:middle}
-
-
-/* ============================================================
-   CSS 06 — INSURANCE TOOL + CARRIER SHOWCASE
-   ============================================================ */
-.tools-showcase{min-width:0}
-.tools-group + .tools-group{margin-top:34px}
-.tools-group-label{
-  font-size:14px;
-  font-weight:900;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--slate);
-  margin:0 0 14px;
+.nav-links a{
+  transition:color .2s ease;
 }
-.tool-grid-main{padding-top:6px;padding-bottom:10px}
-.carriers-group{border-top:1px solid var(--line);padding-top:28px}
-
-/* Insurance carrier marquee */
-.carrier-marquee{
+.nav-links a:hover{
+  color:var(--cream);
+}
+.nav-cta{
+  padding:10px 18px;
+  border-radius:3px;
+  background:var(--red);
+  color:var(--cream);
+  font-weight:700;
+}
+/* =========================================================
+05. HERO SECTION
+========================================================= */
+.hero{
   position:relative;
-  width:100%;
   overflow:hidden;
-  padding:8px 0 18px;
-  mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to right,transparent 0,black 4%,black 96%,transparent 100%);
+  padding:105px 0 94px;
+  background:radial-gradient(circle at 82% 8%,rgba(169,0,0,.30),transparent 27%),var(--charcoal);
+  border-bottom:1px solid var(--line);
 }
-.carrier-track{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%;animation:none;will-change:auto}
-.carrier-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;width:100%}
-.carrier-card{
-  flex:0 0 160px;
-  width:160px;
-  min-height:138px;
-  padding:13px 11px 12px;
-  background:#fff;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:560px;
+  height:560px;
+  right:-180px;
+  top:-210px;
+  border-radius:50%;
+  background:var(--red);
+  opacity:.12;
+}
+.hero-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr .82fr;
+  align-items:center;
+  gap:8vw;
+}
+.hero-copy{
+  max-width:700px;
+  color:var(--taupe);
+  font-size:22px;
+  margin-bottom:30px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:51px;
+  padding:0 22px;
+  border-radius:3px;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.02em;
+  border:1px solid transparent;
+}
+.btn-primary{
+  background:var(--red);
+  color:var(--cream);
+}
+.btn-secondary{
+  background:transparent;
+  color:var(--cream);
+  border-color:rgba(241,236,227,.38);
+}
+/* =========================================================
+06. PROFILE PHOTO
+The photo intentionally has NO gradient overlay and NO filter.
+========================================================= */
+.photo-card{
+  position:relative;
+  min-height:500px;
+  background:var(--graphite);
+  border:1px solid rgba(241,236,227,.17);
+  border-radius:2px;
+  padding:12px;
+  transform:rotate(2deg);
+  box-shadow:var(--shadow);
+}
+.photo-card:before{
+  display:none;
+  content:none;
+}
+.photo-card img{
+  width:100%;
+  height:474px;
+  object-fit:cover;
+  object-position:center 30%;
+  border-radius:0;
+  filter:none;
+}
+.photo-label{
+  position:absolute;
+  z-index:3;
+  left:18px;
+  bottom:18px;
+  padding:10px 14px;
+  border-radius:2px;
+  background:var(--red);
+  color:var(--cream);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+/* =========================================================
+07. ABOUT SECTION
+========================================================= */
+.about{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:8vw;
+  align-items:center;
+}
+.about-image{
+  min-height:440px;
+  background:var(--graphite);
+  border-radius:2px;
+  padding:13px;
+  overflow:hidden;
+}
+.about-image img{
+  height:410px;
+  width:100%;
+  object-fit:cover;
+  object-position:center 28%;
+  border-radius:0;
+  filter:none;
+}
+.about-copy p{
+  color:var(--taupe);
+  font-size:18px;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:28px;
+}
+.stat{
+  background:var(--graphite);
   border:1px solid var(--line);
-  border-radius:18px;
+  border-radius:2px;
+  padding:18px;
+}
+.stat strong{
+  display:block;
+  color:var(--cream);
+  font-family:"Cormorant Garamond",serif;
+  font-size:2.35rem;
+  line-height:1;
+}
+.stat span{
+  display:block;
+  margin-top:8px;
+  color:var(--taupe);
+  font-size:14px;
+  font-weight:700;
+}
+/* =========================================================
+08. SERVICES SECTION
+========================================================= */
+.services,.expect{
+  background:#171717;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:31px;
+  background:var(--graphite);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.card-icon{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--red);
+  color:var(--cream);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  margin-bottom:20px;
+}
+.card h3{
+  margin:0 0 10px;
+  color:var(--cream);
+  font-size:24px;
+}
+.card p{
+  margin:0 0 17px;
+  color:var(--taupe);
+  font-size:16px;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.tag{
+  background:rgba(241,236,227,.08);
+  color:var(--taupe);
+  border:1px solid rgba(241,236,227,.11);
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:13px;
+  font-weight:700;
+}
+/* =========================================================
+09. TOOLS
+Same naming pattern as the GenVA file:
+.tool → card, .tool-logo → logo box, .tool strong → name
+========================================================= */
+.tools-wrap{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:60px;
+  align-items:start;
+}
+.tools-copy{
+  position:sticky;
+  top:120px;
+}
+.tools-copy p{
+  color:var(--taupe);
+  font-size:18px;
+}
+.tools-showcase{
+  min-width:0;
+}
+.tools-group{
+  margin-bottom:34px;
+}
+.tools-group-label{
+  margin-bottom:12px;
+}
+.tool-grid{
+  width:100%;
+  padding:10px 0 22px;
+  overflow:visible;
+}
+.tool-track{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+}
+.tool-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  width:100%;
+}
+.tool{
+  flex:0 0 172px;
+  width:172px;
+  height:172px;
+  min-height:172px;
+  padding:18px 14px 16px;
+  background:#26211e;
+  border:1px solid rgba(241,236,227,.13);
+  border-radius:2px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  box-shadow:0 9px 26px rgba(49,54,71,.07);
-  transition:transform .2s ease,box-shadow .2s ease;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
 }
-.carrier-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 15px 34px rgba(49,54,71,.12);
+.tool-logo{
+  width:104px;
+  height:104px;
+  flex:0 0 104px;
+  padding:12px;
+  margin-bottom:12px;
+  background:var(--cream);
+  border:1px solid rgba(169,0,0,.28);
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.tool-logo img{
+  width:78%;
+  height:78%;
+  max-width:78%;
+  max-height:78%;
+  object-fit:contain;
+  animation:toolLogoFloat 3.8s ease-in-out infinite;
+  transform-origin:center;
+}
+.tool:nth-child(2n) .tool-logo img{
+  animation-delay:-1.9s;
+}
+.tool strong{
+  width:100%;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--cream);
+  font-size:16px;
+  line-height:1.2;
+}
+/* =========================================================
+10. INSURANCE CARRIERS
+========================================================= */
+.carriers-group{
+  border-top:1px solid var(--line);
+  padding-top:28px;
+}
+.carrier-marquee{
+  width:100%;
+  overflow:visible;
+  padding:10px 0;
+}
+.carrier-track{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+}
+.carrier-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  width:100%;
+}
+.carrier-card{
+  flex:0 0 146px;
+  width:146px;
+  min-height:126px;
+  padding:12px 9px;
+  background:#26211e;
+  border:1px solid rgba(241,236,227,.13);
+  border-radius:2px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
 }
 .carrier-logo{
   position:relative;
-  width:116px;
-  height:76px;
-  border-radius:13px;
-  background:#fff;
-  border:1px dashed rgba(49,54,71,.18);
+  width:106px;
+  height:70px;
+  margin-bottom:7px;
+  padding:8px;
+  background:var(--cream);
+  border:1px solid rgba(169,0,0,.28);
+  border-radius:12px;
   display:grid;
   place-items:center;
-  padding:7px;
-  margin-bottom:9px;
   overflow:hidden;
 }
 .carrier-logo-img{
   width:100%;
   height:100%;
   object-fit:contain;
-  display:block;
-  position:relative;
-  z-index:2;
-  background:#fff;
+  animation:carrierLogoFloat 4s ease-in-out infinite;
+  transform-origin:center;
+}
+.carrier-card:nth-child(2n) .carrier-logo-img{
+  animation-delay:-2s;
+}
+.carrier-card:nth-child(3n) .carrier-logo-img{
+  animation-delay:-1s;
 }
 .carrier-placeholder{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  padding:7px;
-  font-size:14px;
-  line-height:1.05;
-  font-weight:900;
-  color:var(--muted);
-  text-align:center;
-  z-index:1;
+  display:none;
+  color:var(--taupe);
+  font-size:12px;
 }
 .carrier-card strong{
+  color:var(--cream);
   font-size:13px;
   line-height:1.15;
-  color:var(--ink);
 }
-
-@media(max-width:900px){
-  .carrier-card{flex-basis:146px;width:146px}
-  .carrier-logo{width:106px;height:70px}
-  .carrier-track,.carrier-row{gap:18px}
+/* =========================================================
+11. WORKFLOW
+========================================================= */
+.process{
+  background:var(--graphite);
+  color:var(--cream);
+  border-block:1px solid var(--line);
 }
-@media(max-width:650px){
-  .carrier-marquee{
-    padding:6px 0 14px;
-    mask-image:none;
-    -webkit-mask-image:none;
-  }
-  .carrier-track{gap:14px;animation-duration:34s}
-  .carrier-row{gap:14px}
-  .carrier-card{
-    flex-basis:128px;
-    width:128px;
-    min-height:126px;
-    padding:10px 8px;
-  }
-  .carrier-logo{
-    width:94px;
-    height:62px;
-    margin-bottom:7px;
-  }
-  .carrier-placeholder{font-size:12px}
-  .carrier-card strong{font-size:12px}
+.process .section-intro,.process .step p{
+  color:var(--taupe);
 }
-@media(prefers-reduced-motion:reduce){
-  .carrier-track{
-    animation:none;
-    transform:none;
-  }
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
 }
-    @media (max-width:700px){
-      .brand-logo-placeholder{
-        width:38px;
-        height:38px;
-        flex-basis:38px;
-      }
-    }
-  
-    .floating-book-call{
-      position:fixed;
-      right:24px;
-      bottom:24px;
-      z-index:9999;
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:13px 18px;
-      border-radius:999px;
-      background:var(--navy);
-      color:var(--white);
-      text-decoration:none;
-      font-weight:800;
-      font-size:.92rem;
-      letter-spacing:.01em;
-      box-shadow:0 14px 34px rgba(49,54,71,.24);
-      border:1px solid rgba(255,255,255,.25);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-    .floating-book-call:hover{
-      transform:translateY(-3px);
-      box-shadow:0 18px 40px rgba(49,54,71,.30);
-    }
-    .floating-book-icon{
-      width:24px;
-      height:24px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--sage);
-      color:var(--navy);
-      font-size:.9rem;
-      line-height:1;
-    }
-    @media (max-width:700px){
-      .floating-book-call{
-        right:14px;
-        bottom:14px;
-        padding:11px 15px;
-        font-size:.84rem;
-      }
-      .floating-book-icon{
-        width:22px;
-        height:22px;
-      }
-    }
-    @media (prefers-reduced-motion:reduce){
-      .floating-book-call{transition:none}
-    }
-
-/* ============================================================
-   CSS 07 — MOBILE HEADER ADJUSTMENTS
-   ============================================================ */
-@media (max-width: 650px) {
-  .nav-inner {
-    gap: 10px; /* Reduces space between your name and the button */
-  }
-
-  .brand span:last-child {
-    font-size: 14px; /* Keeps your name compact on small screens */
-  }
-
-  .nav-cta {
-    padding: 8px 14px; /* Reduces padding so the button fits cleanly */
-    font-size: 13px;    /* Slightly smaller font to guarantee single-line fit */
-  }
+.step{
+  padding:24px 18px;
+  border-top:2px solid var(--red);
+  background:rgba(17,17,17,.28);
+  border-radius:0;
+  color:var(--cream);
 }
-
-
-  
-/* ============================================================
-   CSS 08 — TYPOGRAPHY: DM SANS + MANROPE
-   ============================================================ */
-body{
-  font-family:"DM Sans",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+.step-number{
+  color:var(--red);
+  font-family:"Cormorant Garamond",serif;
+  font-size:2.1rem;
 }
-h1,h2{
-  font-family:"Cormorant Garamond","DM Sans",ui-sans-serif,system-ui,sans-serif;
+.step-number h3{
+  margin:0;
+}
+.step h3{
+  margin:28px 0 8px;
+  color:var(--cream);
+  font-size:20px;
+}
+.step p{
+  margin:0;
+  font-size:16px;
+}
+/* =========================================================
+12. EXPERIENCE
+========================================================= */
+.experience-list{
+  display:grid;
+  gap:16px;
+}
+.experience{
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:35px;
+  padding:30px;
+  background:var(--graphite);
+  border:1px solid var(--line);
+  border-left:3px solid var(--red);
+  border-radius:2px;
+}
+.experience-meta{
+  color:var(--taupe);
+  font-size:15px;
+}
+.experience h3{
+  margin:0 0 4px;
+  color:var(--cream);
+  font-size:24px;
+}
+.experience h4{
+  margin:0 0 14px;
+  color:var(--taupe);
+  font-size:20px;
+}
+.experience p{
+  margin:0;
+  color:var(--taupe);
+  font-size:16px;
+}
+/* =========================================================
+13. WHAT YOU CAN EXPECT
+========================================================= */
+.expect-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.expect-card{
+  padding:24px;
+  background:var(--graphite);
+  border:1px solid var(--line);
+  border-radius:2px;
+}
+.expect-card h3{
+  margin:0 0 7px;
+  color:var(--cream);
+  font-size:20px;
+}
+.expect-card p{
+  margin:0;
+  color:var(--taupe);
+  font-size:16px;
+}
+/* =========================================================
+14. CONTACT / CALENDLY
+These class names intentionally match the GenVA structure.
+========================================================= */
+.contact{
+  padding:110px 0;
+  background:var(--charcoal);
+  color:var(--cream);
+}
+.contact .container{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  gap:clamp(42px,7vw,100px);
+  align-items:start;
+}
+.contact .kicker{
+  color:var(--taupe);
+  margin-bottom:14px;
+}
+.contact h2{
+  max-width:620px;
+  margin:0;
+  font-size:clamp(4rem,6vw,6rem);
+  line-height:.88;
+  letter-spacing:-.055em;
+}
+.contact-copy>p{
+  max-width:570px;
+  margin:20px 0 28px;
+  color:var(--taupe);
+  font-size:1.05rem;
+}
+.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:12px;
+}
+.contact-email{
+  background:var(--red);
+  color:var(--cream);
+  border-color:var(--red);
+}
+.contact-email:hover{
+  background:#8F0000;
+  border-color:#8F0000;
+}
+.contact-linkedin{
+  background:transparent;
+  color:var(--cream);
+  border-color:rgba(241,236,227,.38);
+}
+.contact-info{
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+.contact-chip{
+  padding:12px 18px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--taupe);
+  font-size:15px;
+}
+.calendly-wrapper{
+  min-width:0;
+  background:var(--graphite);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:clamp(24px,4vw,42px);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.calendly-heading{
+  margin-bottom:18px;
+}
+.calendly-label{
+  display:block;
+  margin-bottom:12px;
+  color:var(--taupe);
+  font-size:12px;
   font-weight:800;
-  letter-spacing:-.045em;
+  letter-spacing:.18em;
+  text-transform:uppercase;
 }
-h3,h4{
-  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
-  font-weight:700;
+.calendly-heading h3{
+  margin:0 0 10px;
+  color:var(--cream);
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2rem,3.5vw,2.6rem);
+  font-weight:600;
+  line-height:.94;
 }
-.kicker,.eyebrow{
-  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+.calendly-heading p{
+  margin:0 0 24px;
+  color:var(--taupe);
+  font-size:1rem;
+}
+.calendly-inline-widget{
+  width:100%;
+  min-height:720px;
+  overflow:hidden;
+  background:var(--cream);
+}
+.calendly-inline-widget iframe{
+  display:block;
+  width:100%;
+  height:720px;
+  min-height:720px;
+  border:0;
+}
+/* =========================================================
+15. FLOATING BOOK A CALL
+========================================================= */
+.floating-book-call{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:9999;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:13px 19px;
+  border-radius:999px;
+  background:var(--red);
+  color:var(--cream);
+  border:1px solid rgba(241,236,227,.18);
   font-weight:800;
-  letter-spacing:.12em;
+  font-size:.92rem;
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
-button,.btn,.nav-links,.nav-cta{
-  font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;
-  font-weight:700;
+.floating-book-call:hover{
+  background:#8F0000;
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.46);
 }
-
-
-/* ============================================================
-   CSS 09 — REUSABLE PORTFOLIO ANIMATIONS
-   ------------------------------------------------------------
-   COPY/PASTE FRIENDLY:
-   • .reveal              = scroll-in animation
-   • .reveal-stagger      = children appear one after another
-   • .hover-lift          = card hover lift
-   • .tool-logo-animate   = tool/carrier hover effect
-   • .float-soft          = gentle floating animation
-   • .btn-animate         = button hover/press effect
-   • .profile-animate     = subtle image zoom
-   ============================================================ */
-
-/* 1. SCROLL REVEAL — fade + slide upward */
+.floating-book-icon{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--cream);
+  color:var(--red);
+}
+/* =========================================================
+16. FOOTER
+========================================================= */
+footer{
+  background:var(--charcoal);
+  color:var(--taupe);
+  border-top:1px solid var(--line);
+  padding:26px 0 105px;
+  text-align:center;
+  font-size:14px;
+}
+/* =========================================================
+17. ANIMATIONS
+========================================================= */
 .reveal{
   opacity:0;
   transform:translateY(28px);
-  transition:opacity .7s ease, transform .7s ease;
+  transition:opacity .7s ease,transform .7s ease;
 }
 .reveal.is-visible{
   opacity:1;
   transform:translateY(0);
 }
-
-/* 2. STAGGERED REVEAL — children appear one after another */
-.reveal-stagger > *{
-  opacity:0;
-  transform:translateY(22px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-.reveal-stagger.is-visible > *{
-  opacity:1;
-  transform:translateY(0);
-}
-.reveal-stagger.is-visible > *:nth-child(1){transition-delay:.05s}
-.reveal-stagger.is-visible > *:nth-child(2){transition-delay:.12s}
-.reveal-stagger.is-visible > *:nth-child(3){transition-delay:.19s}
-.reveal-stagger.is-visible > *:nth-child(4){transition-delay:.26s}
-.reveal-stagger.is-visible > *:nth-child(5){transition-delay:.33s}
-.reveal-stagger.is-visible > *:nth-child(6){transition-delay:.40s}
-
-/* 3. CARD HOVER LIFT */
 .hover-lift{
-  transition:transform .3s ease, box-shadow .3s ease;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
 }
-@media (hover:hover) and (pointer:fine){
+@media(hover:hover) and (pointer:fine){
   .hover-lift:hover{
     transform:translateY(-7px);
-    box-shadow:0 18px 40px rgba(49,54,71,.16);
+    box-shadow:0 18px 40px rgba(0,0,0,.22);
+  }
+  .tool:hover,.carrier-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 36px rgba(0,0,0,.22);
+    border-color:rgba(169,0,0,.85);
   }
 }
-
-/* 4. TOOL/LOGO HOVER */
-.tool-logo-animate{
-  transition:transform .3s ease, box-shadow .3s ease;
-}
-@media (hover:hover) and (pointer:fine){
-  .tool-logo-animate:hover{
-    transform:translateY(-6px) scale(1.04);
-    box-shadow:0 12px 28px rgba(49,54,71,.14);
-  }
-}
-
-/* 5. OPTIONAL GENTLE FLOAT */
-.float-soft{
-  animation:softFloat 4s ease-in-out infinite;
-}
-@keyframes softFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
-}
-
-/* 6. BUTTON MICRO-INTERACTION */
 .btn-animate{
-  transition:transform .25s ease, box-shadow .25s ease;
+  transition:transform .25s ease,box-shadow .25s ease;
 }
-@media (hover:hover) and (pointer:fine){
+@media(hover:hover) and (pointer:fine){
   .btn-animate:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 24px rgba(49,54,71,.18);
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
   }
 }
 .btn-animate:active{
   transform:translateY(0) scale(.98);
 }
-
-/* 7. PROFILE IMAGE HOVER */
-.profile-animate{
-  transition:transform .5s ease;
-}
-@media (hover:hover) and (pointer:fine){
-  .profile-animate:hover{
-    transform:scale(1.025);
+@keyframes toolLogoFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    transform:translateY(-4px) scale(1.025);
   }
 }
-
-/* 8. RESPECT USERS WHO PREFER LESS MOTION */
-@media (prefers-reduced-motion:reduce){
-  .reveal,
-  .reveal-stagger > *,
-  .hover-lift,
-  .tool-logo-animate,
-  .btn-animate,
-  .profile-animate{
+@keyframes carrierLogoFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    transform:translateY(-3px) scale(1.025);
+  }
+}
+/* =========================================================
+18. RESPONSIVE / MOBILE
+========================================================= */
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+  }
+  .hero-grid,.about,.contact .container{
+    grid-template-columns:1fr;
+  }
+  .hero{
+    padding-top:78px;
+  }
+  .photo-card{
+    max-width:520px;
+    width:100%;
+    margin:auto;
+  }
+  .tools-wrap{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  .tools-copy{
+    position:static;
+  }
+  .process-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .experience{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+  .contact .hero-actions,.contact-actions{
+    justify-content:flex-start;
+  }
+  .tool{
+    flex-basis:156px;
+    width:156px;
+    height:158px;
+    min-height:158px;
+  }
+  .tool-logo{
+    width:92px;
+    height:92px;
+    flex-basis:92px;
+  }
+}
+@media(max-width:650px){
+  .container{
+    width:min(calc(100% - 30px),var(--max-width));
+  }
+  section{
+    padding:70px 0;
+  }
+  .nav-inner{
+    min-height:70px;
+    gap:10px;
+  }
+  .brand span:last-child{
+    font-size:14px;
+  }
+  .brand-logo-placeholder{
+    width:38px;
+    height:38px;
+    flex-basis:38px;
+  }
+  .nav-cta{
+    padding:8px 14px;
+    font-size:13px;
+  }
+  .hero{
+    padding:78px 0 70px;
+  }
+  .hero h1{
+    font-size:clamp(3.5rem,16vw,5.1rem);
+  }
+  .hero-actions .btn{
+    width:100%;
+  }
+  .photo-card{
+    min-height:390px;
+    transform:none;
+  }
+  .photo-card img{
+    height:364px;
+  }
+  .photo-label{
+    left:50%;
+    right:auto;
+    bottom:20px;
+    width:calc(100% - 40px);
+    max-width:90%;
+    transform:translateX(-50%);
+    text-align:center;
+    font-size:clamp(11px,3.2vw,14px);
+    line-height:1.2;
+    padding:9px 12px;
+  }
+  .cards,.stats,.expect-grid,.process-grid{
+    grid-template-columns:1fr;
+  }
+  .section-head{
+    display:block;
+  }
+  .section-intro{
+    margin-top:16px;
+  }
+  .tool-row{
+    gap:14px;
+  }
+  .tool{
+    flex-basis:136px;
+    width:136px;
+    height:142px;
+    min-height:142px;
+    padding:14px 10px;
+  }
+  .tool-logo{
+    width:80px;
+    height:80px;
+    flex-basis:80px;
+    padding:9px;
+    margin-bottom:9px;
+  }
+  .tool strong{
+    font-size:14px;
+  }
+  .carrier-row{
+    gap:14px;
+  }
+  .carrier-card{
+    flex-basis:128px;
+    width:128px;
+    min-height:126px;
+  }
+  .carrier-logo{
+    width:94px;
+    height:62px;
+  }
+  .contact{
+    padding:78px 0;
+  }
+  .contact h2{
+    font-size:clamp(3.2rem,14vw,4.8rem);
+  }
+  .contact-actions .btn{
+    width:auto;
+  }
+  .calendly-wrapper{
+    padding:20px 12px 12px;
+  }
+  .calendly-inline-widget{
+    min-height:700px;
+  }
+  .calendly-inline-widget iframe{
+    height:700px;
+    min-height:700px;
+  }
+  .floating-book-call{
+    right:14px;
+    bottom:14px;
+    padding:11px 15px;
+    font-size:.84rem;
+  }
+  .floating-book-icon{
+    width:22px;
+    height:22px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.hover-lift,.btn-animate{
     opacity:1;
     transform:none;
     transition:none;
   }
-  .float-soft{
+  .tool-logo img,.carrier-logo-img{
     animation:none;
   }
-}
-
-
-/* ============================================================
-   CSS 10 — EQUAL-SIZE TOOL BOXES
-   ------------------------------------------------------------
-   The HTML uses class=".tool". These rules force every tool
-   card to share the same width and height, even when the
-   name wraps onto two lines (for example Google Workspace).
-   ============================================================ */
-.tool-row .tool{
-  flex:0 0 172px !important;
-  width:172px !important;
-  height:172px !important;
-  min-height:172px !important;
-  max-height:172px !important;
-  box-sizing:border-box;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.tool-row .tool-logo{
-  width:104px !important;
-  height:104px !important;
-  flex:0 0 104px;
-  margin-bottom:12px;
-}
-
-.tool-row .tool strong{
-  width:100%;
-  min-height:38px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  line-height:1.2;
-}
-
-/* Keep the boxes equal at the existing responsive breakpoints. */
-@media (max-width:900px){
-  .tool-row .tool{
-    flex-basis:156px !important;
-    width:156px !important;
-    height:158px !important;
-    min-height:158px !important;
-    max-height:158px !important;
+  .floating-book-call{
+    transition:none;
   }
-  .tool-row .tool-logo{
-    width:92px !important;
-    height:92px !important;
-    flex-basis:92px;
-  }
-}
-
-@media (max-width:650px){
-  .tool-row .tool{
-    flex-basis:136px !important;
-    width:136px !important;
-    height:142px !important;
-    min-height:142px !important;
-    max-height:142px !important;
-    padding:14px 10px !important;
-  }
-  .tool-row .tool-logo{
-    width:80px !important;
-    height:80px !important;
-    flex-basis:80px;
-    margin-bottom:9px;
-  }
-  .tool-row .tool strong{
-    min-height:32px;
-    font-size:14px !important;
-  }
-}
-
-</style>
-
-<style id="static-logo-rows">
-/* 1. Remove edge fading masks and allow visible overflow */
-.tool-grid,
-.carrier-marquee {
-  mask-image: none !important;
-  -webkit-mask-image: none !important;
-  overflow: visible !important;
-  display: flex !important;
-  justify-content: center !important;
-  padding: 10px 0 !important;
-}
-
-/* 2. Remove fixed positioning and allow the tracks to wrap */
-.tool-track,
-.carrier-track {
-  position: static !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  transform: none !important;
-  animation: none !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-}
-
-/* 3. Ensure the active rows wrap their contents naturally */
-.tool-row,
-.carrier-row {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 18px !important;
-  width: 100% !important;
-}
-
-/* 4. Hide the duplicate rows previously used for the continuous loop */
-.tool-row[aria-hidden="true"],
-.carrier-row[aria-hidden="true"] {
-  display: none !important;
 }
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style id="editorial-redesign">
-:root{--charcoal:#171615;--oxblood:#8F1717;--cream:#E8E0D2;--taupe:#A79A8B;--brown:#302722;--white:#fffaf1;--line:rgba(232,224,210,.16);--shadow:0 22px 55px rgba(15,10,8,.24);--radius:22px;--max:1180px}*{box-sizing:border-box}body{background:var(--charcoal);color:var(--cream);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.65}h1,h2{font-family:"Cormorant Garamond",serif;font-weight:600;letter-spacing:-.045em}h3,h4{font-family:"DM Sans",sans-serif}.container{width:min(calc(100% - 48px),var(--max))}.nav{background:rgba(23,22,21,.9);border-color:var(--line)}.nav-inner{min-height:82px}.brand{color:var(--cream);font-weight:600;letter-spacing:-.02em}.brand-logo-placeholder{border-color:rgba(143,23,23,.75);background:var(--brown);box-shadow:none}.nav-links{color:var(--taupe);font-weight:500;gap:27px}.nav-links a:hover{color:var(--cream)}.nav-cta,.floating-book-call{background:var(--oxblood);color:var(--cream);border-color:rgba(232,224,210,.22);box-shadow:0 12px 28px rgba(0,0,0,.25)}.nav-cta{padding:10px 18px}.hero{padding:105px 0 94px;background:radial-gradient(circle at 82% 8%,rgba(143,23,23,.44),transparent 27%),var(--charcoal);border-bottom:1px solid var(--line)}.hero:after{width:560px;height:560px;background:var(--oxblood);opacity:.17}.hero-grid{gap:8vw}.eyebrow,.kicker{color:var(--taupe);font-size:12px;font-weight:700;letter-spacing:.18em}.eyebrow:before{background:var(--oxblood);width:32px}.hero h1{max-width:720px;font-size:clamp(4.1rem,8vw,7.4rem);line-height:.86;margin-bottom:28px}.hero-copy{max-width:590px;color:var(--taupe);font-size:1.13rem}.btn{min-height:51px;border-radius:3px;padding:0 22px;font-size:.94rem;font-weight:700;letter-spacing:.02em}.btn-primary{background:var(--oxblood);color:var(--cream)}.btn-secondary{border-color:rgba(232,224,210,.38);color:var(--cream)}.photo-card{background:var(--brown);border:1px solid rgba(232,224,210,.17);border-radius:2px;padding:12px;transform:rotate(2deg);box-shadow:var(--shadow)}.photo-card img{border-radius:0;filter:sepia(.14) contrast(1.05) brightness(.93)}.photo-label{left:18px;bottom:18px;border-radius:2px;background:var(--oxblood);color:var(--cream);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}section{padding:104px 0;background:var(--charcoal)}.section-head{border-bottom:1px solid var(--line);padding-bottom:30px;margin-bottom:36px}.section-intro,.about-copy p,.tools-copy p,.experience-meta,.experience p,.card p,.expect-card p{color:var(--taupe)}h2{font-size:clamp(3.2rem,5vw,5.2rem);line-height:.92}.about{gap:8vw}.about-image{background:var(--brown);border-radius:2px;padding:13px}.about-image img{border-radius:0;filter:sepia(.18) saturate(.82) brightness(.91)}.stats{gap:10px}.stat,.card,.tool,.carrier-card,.experience{background:var(--brown);border-color:var(--line);border-radius:2px;box-shadow:none}.stat strong{color:var(--cream);font-family:"Cormorant Garamond",serif;font-size:2.35rem;line-height:1}.stat span{color:var(--taupe)}.services,.expect{background:#211e1c}.card{padding:31px}.card:hover,.tool:hover,.carrier-card:hover{border-color:rgba(143,23,23,.85);box-shadow:0 16px 36px rgba(0,0,0,.22)}.card-icon{border-radius:50%;background:var(--oxblood);color:var(--cream);margin-bottom:20px}.card h3,.experience h3,.expect-card h3{color:var(--cream)}.tags{gap:8px}.tag{background:rgba(232,224,210,.08);color:var(--taupe);border:1px solid rgba(232,224,210,.11);border-radius:999px;padding:6px 10px}.tools-group-label{color:var(--taupe)}.carriers-group{border-color:var(--line)}.tool,.carrier-card{background:#26211e;border-radius:2px;border-color:rgba(232,224,210,.13);box-shadow:none}.tool-logo,.carrier-logo{background:var(--white);border-radius:0;border-color:rgba(143,23,23,.25)}.tool strong,.carrier-card strong{color:var(--cream)}.carrier-placeholder{color:var(--taupe)}.process{background:var(--brown);border-block:1px solid var(--line)}.process .kicker{color:var(--taupe)}.process .section-intro,.step p{color:var(--taupe)}.step{border-top-color:var(--oxblood);background:rgba(23,22,21,.28);border-radius:0}.step-number{color:var(--oxblood);font-family:"Cormorant Garamond",serif;font-size:2.1rem}.experience{grid-template-columns:210px 1fr;padding:30px;border-left:3px solid var(--oxblood)}.experience h4{color:var(--taupe)}.expect-card{background:var(--brown);border-radius:2px}.contact{padding:110px 0;background:radial-gradient(circle at 12% 20%,rgba(143,23,23,.35),transparent 28%),var(--charcoal);text-align:left}.contact .container{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(42px,7vw,100px);align-items:start}.contact .kicker{color:var(--taupe)}.contact h2{max-width:620px;margin:0}.contact p{margin:20px 0 28px;color:var(--taupe);font-size:1.05rem}.contact .hero-actions{justify-content:flex-start}.contact-info{justify-content:flex-start}.contact-chip{padding:8px 12px;border-radius:999px;color:var(--taupe);font-size:.78rem}.contact-form{background:var(--brown);border:1px solid rgba(232,224,210,.18);border-radius:2px;padding:clamp(24px,4vw,42px);box-shadow:var(--shadow)}.contact-form h3{margin:0 0 25px;font-family:"Cormorant Garamond",serif;font-size:2.35rem;font-weight:600;line-height:1;color:var(--cream)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form-field{display:grid;gap:7px}.form-field.full{grid-column:1/-1}.form-field label{color:var(--cream);font-size:.81rem;font-weight:700}.form-field input,.form-field select,.form-field textarea{width:100%;appearance:none;background:#211e1c;color:var(--cream);border:1px solid rgba(232,224,210,.24);border-radius:2px;padding:13px 14px;font:inherit;outline:none;transition:border-color .2s,box-shadow .2s}.form-field textarea{min-height:120px;resize:vertical}.form-field input::placeholder,.form-field textarea::placeholder{color:#8f8479}.form-field select{background-image:linear-gradient(45deg,transparent 50%,var(--cream) 50%),linear-gradient(135deg,var(--cream) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}.form-field select option{background:var(--brown)}.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--oxblood);box-shadow:0 0 0 3px rgba(143,23,23,.22)}.form-submit{width:100%;margin-top:23px;border:0;border-radius:2px;background:var(--oxblood);color:var(--cream);min-height:53px;font:700 .94rem "DM Sans",sans-serif;letter-spacing:.02em;cursor:pointer}.form-submit:hover{background:#ad2424}.form-note{margin:12px 0 0!important;font-size:.76rem!important;text-align:center;color:var(--taupe)!important}footer{background:var(--charcoal);color:var(--taupe);border-color:var(--line);padding:26px 0 105px}.floating-book-call:hover{background:#ad2424}.floating-book-icon{background:var(--cream);color:var(--oxblood)}@media(max-width:900px){.contact .container{grid-template-columns:1fr}.contact .hero-actions{justify-content:flex-start}.tools-copy{position:static}}@media(max-width:650px){.container{width:min(calc(100% - 30px),var(--max))}.hero{padding:78px 0 70px}.hero h1{font-size:clamp(3.5rem,16vw,5.1rem)}.photo-card{transform:none}.experience{grid-template-columns:1fr}.contact{padding:78px 0}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.contact-form{padding:24px 20px}.contact .hero-actions .btn{width:auto}.floating-book-call{bottom:16px;right:16px}}
-</style>
-
-<style id="final-color-profile">
-/* ============================================================
-   FINAL COLOR PROFILE
-   ------------------------------------------------------------
-   Almost Black  #111111  → main background
-   Vintage Red   #A90000  → brand / accent
-   Ivory         #F1ECE3  → primary text
-   Warm Gray     #B7B0A5  → secondary text
-   Graphite      #292929  → cards / panels
-   ============================================================ */
-:root{
-  --charcoal:#111111;
-  --oxblood:#A90000;
-  --cream:#F1ECE3;
-  --taupe:#B7B0A5;
-  --brown:#292929;
-  --white:#F1ECE3;
-
-  --line:rgba(241,236,227,.16);
-  --shadow:0 22px 55px rgba(0,0,0,.28);
-}
-
-/* Main page + typography */
-body{
-  background:var(--charcoal);
-  color:var(--cream);
-}
-
-/* Header */
-.nav{
-  background:rgba(17,17,17,.92);
-  border-color:var(--line);
-}
-.brand-logo-placeholder{
-  background:var(--brown);
-  border-color:rgba(169,0,0,.75);
-}
-.nav-links{color:var(--taupe)}
-.nav-links a:hover{color:var(--cream)}
-.nav-cta{
-  background:var(--oxblood);
-  color:var(--cream);
-}
-
-/* Hero */
-.hero{
-  background:var(--charcoal);
-  color:var(--cream);
-}
-.hero:after{background:var(--oxblood)}
-.eyebrow,.kicker{color:var(--taupe)}
-.eyebrow:before{background:var(--oxblood)}
-.hero-copy{color:var(--taupe)}
-.btn-primary{
-  background:var(--oxblood);
-  color:var(--cream);
-}
-.btn-secondary{
-  border-color:rgba(241,236,227,.38);
-  color:var(--cream);
-}
-
-/* Images / photo framing */
-.photo-card,
-.about-image{
-  background:var(--brown);
-}
-.photo-card:before{
-  background:transparent(145deg,rgba(169,0,0,.45),transparent 52%);
-}
-.photo-label{
-  background:var(--oxblood);
-  color:var(--cream);
-}
-
-/* General sections */
-section{background:var(--charcoal)}
-.section-head{border-color:var(--line)}
-.section-intro,
-.about-copy p,
-.tools-copy p,
-.experience-meta,
-.experience p,
-.card p,
-.expect-card p{
-  color:var(--taupe);
-}
-
-/* Cards */
-.services,
-.expect{
-  background:#171717;
-}
-.stat,
-.card,
-.experience,
-.expect-card,
-.tool,
-.carrier-card{
-  background:var(--brown);
-  border-color:var(--line);
-  color:var(--cream);
-}
-.stat strong,
-.card h3,
-.experience h3,
-.expect-card h3,
-.tool strong,
-.carrier-card strong{
-  color:var(--cream);
-}
-.stat span{color:var(--taupe)}
-.card-icon{
-  background:var(--oxblood);
-  color:var(--cream);
-}
-.tag{
-  background:rgba(241,236,227,.08);
-  color:var(--taupe);
-  border-color:rgba(241,236,227,.11);
-}
-.card:hover,
-.tool:hover,
-.carrier-card:hover{
-  border-color:rgba(169,0,0,.85);
-  box-shadow:0 16px 36px rgba(0,0,0,.28);
-}
-
-/* Tools + carrier logo areas */
-.tools-group-label{color:var(--taupe)}
-.carriers-group{border-color:var(--line)}
-.tool-logo,
-.carrier-logo{
-  background:var(--cream);
-  border-color:rgba(169,0,0,.25);
-}
-.carrier-placeholder{color:var(--taupe)}
-
-/* Workflow */
-.process{
-  background:var(--brown);
-  border-block-color:var(--line);
-}
-.process .kicker,
-.process .section-intro,
-.step p{
-  color:var(--taupe);
-}
-.step{
-  border-top-color:var(--oxblood);
-  background:rgba(17,17,17,.35);
-}
-.step-number{color:var(--oxblood)}
-
-/* Experience */
-.experience{
-  border-left-color:var(--oxblood);
-}
-.experience h4{color:var(--taupe)}
-
-/* Contact */
-.contact{
-  background:var(--charcoal);
-}
-.contact .kicker,
-.contact p{
-  color:var(--taupe);
-}
-.contact-chip{
-  color:var(--taupe);
-  border-color:rgba(241,236,227,.18);
-}
-.contact-form{
-  background:var(--brown);
-  border-color:var(--line);
-}
-.form-field input,
-.form-field select,
-.form-field textarea{
-  background:#171717;
-  color:var(--cream);
-  border-color:rgba(241,236,227,.24);
-}
-.form-field label{color:var(--cream)}
-.form-field input::placeholder,
-.form-field textarea::placeholder{
-  color:#8f887f;
-}
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus{
-  border-color:var(--oxblood);
-  box-shadow:0 0 0 3px rgba(169,0,0,.22);
-}
-.form-submit{
-  background:var(--oxblood);
-  color:var(--cream);
-}
-.form-submit:hover,
-.floating-book-call:hover{
-  background:#C00000;
-}
-
-/* Floating Book a Call */
-.floating-book-call{
-  background:var(--oxblood);
-  color:var(--cream);
-  border-color:rgba(241,236,227,.25);
-}
-.floating-book-icon{
-  background:var(--cream);
-  color:var(--oxblood);
-}
-
-/* Footer */
-footer{
-  background:var(--charcoal);
-  color:var(--taupe);
-  border-color:var(--line);
-}
-
-/* Mobile */
-@media(max-width:650px){
-  .nav-cta{background:var(--oxblood);color:var(--cream)}
-}
-</style>
-
 </head>
 <body>
 
+<!-- LEARNING NOTE: Change the text inside .brand to change your name. Change href values to change where navigation links go. -->
 <!-- ==================== 03. NAVIGATION / HEADER ==================== -->
 <header class="nav">
 <div class="container nav-inner">
@@ -1098,6 +1133,7 @@ footer{
 
 <main id="top">
 
+<!-- LEARNING NOTE: The hero contains your main headline, intro, buttons, and profile photo. -->
 <!-- ==================== 04. HERO SECTION ==================== -->
 <section class="hero">
 <div class="container hero-grid">
@@ -1115,6 +1151,7 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Edit the paragraph/stat text here without touching the CSS. -->
 <!-- ==================== 05. ABOUT SECTION ==================== -->
 <section id="about">
 <div class="container about">
@@ -1135,6 +1172,7 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Duplicate a .card block to create another service card. -->
 <!-- ==================== 06. SERVICES SECTION ==================== -->
 <section id="services" class="services">
 <div class="container">
@@ -1150,69 +1188,71 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Change an image src="..." to replace a logo. Change alt="..." for accessibility. -->
 <!-- ==================== 07. TOOLS + INSURANCE CARRIERS ==================== -->
 <section id="tools">
-  <div class="container tools-wrap">
-    <div class="tools-copy">
-      <div class="kicker">Tools & Insurance Systems</div>
-      <h2>Tools I use.</h2>
-      <p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms to keep day-to-day business operations organized, efficient, and running smoothly.
-        To deliver reliable support and maintain seamless communication across teams, clients, and partners, I regularly utilize industry-standard software and systems.</p>
-      <p><strong>These are the core tools and insurance carrier platforms I've worked with.</strong></p>
-    </div>
+<div class="container tools-wrap">
+<div class="tools-copy">
+<div class="kicker">Tools & Insurance Systems</div>
+<h2>Tools I use.</h2>
+<p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms to keep day-to-day business operations organized, efficient, and running smoothly.
+To deliver reliable support and maintain seamless communication across teams, clients, and partners, I regularly utilize industry-standard software and systems.</p>
+<p><strong>These are the core tools and insurance carrier platforms I've worked with.</strong></p>
+</div>
 
-    <div class="tools-showcase">
-      <div class="tools-group">
-        <div class="tools-group-label">Agency, Productivity & Operations</div>
-        <div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
-          <div class="tool-track">
-            <div class="tool-row">
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
-              <div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
-            </div>
-            </div>
-        </div>
-      </div>
+<div class="tools-showcase">
+<div class="tools-group">
+<div class="tools-group-label">Agency, Productivity & Operations</div>
+<div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
+<div class="tool-track">
+<div class="tool-row">
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
+<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
+</div>
+</div>
+</div>
+</div>
 
-      <div class="tools-group carriers-group">
-        <div class="tools-group-label">Insurance Carriers</div>
-        <div class="carrier-marquee" aria-label="Insurance carriers I have worked with">
-          <div class="carrier-track"><div class="carrier-row">
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
-          <div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="tools-group carriers-group">
+<div class="tools-group-label">Insurance Carriers</div>
+<div class="carrier-marquee" aria-label="Insurance carriers I have worked with">
+<div class="carrier-track"><div class="carrier-row">
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
+<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 
+<!-- LEARNING NOTE: Each .step is one workflow stage. Duplicate a .step to add another stage. -->
 <!-- ==================== 08. WORKFLOW / PROCESS SECTION ==================== -->
 <section class="process">
 <div class="container">
@@ -1228,6 +1268,7 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Each <article class="experience"> is one job/role entry. -->
 <!-- ==================== 09. EXPERIENCE SECTION ==================== -->
 <section id="experience">
 <div class="container">
@@ -1241,6 +1282,7 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Each .expect-card is one strength/value card. -->
 <!-- ==================== 10. WHAT YOU CAN EXPECT ==================== -->
 <section class="expect">
 <div class="container">
@@ -1255,67 +1297,72 @@ footer{
 </section>
 
 
+<!-- LEARNING NOTE: Email/LinkedIn are normal links. Calendly is embedded in the iframe below. -->
 <!-- ==================== 11. CONTACT / CTA SECTION ==================== -->
 <section id="contact" class="contact">
 <div class="container">
-  <div class="contact-copy">
-    <div class="kicker">Let's Connect</div>
-    <h2>Looking for someone reliable to help move the work forward?</h2>
-    <p>I'm available to support insurance agencies with reliable operations, administrative, client service, and workflow assistance.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary btn-animate" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener">Book a Call</a>
-      <a class="btn btn-secondary btn-animate" href="mailto:chpaulcervantes@gmail.com">Email Me</a>
-      <a class="btn btn-secondary btn-animate" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <div class="contact-info"><span class="contact-chip">Davao City, Philippines</span><span class="contact-chip">Remote Ready</span><span class="contact-chip">Flexible Across US Time Zones</span></div>
-  </div>
-  <form class="contact-form" id="quick-contact-form">
-    <h3>Send a message</h3>
-    <div class="form-grid">
-      <div class="form-field"><label for="contact-name">Your Name *</label><input id="contact-name" name="name" type="text" placeholder="John Doe" required></div>
-      <div class="form-field"><label for="contact-email">Your Email *</label><input id="contact-email" name="email" type="email" placeholder="john@example.com" required></div>
-      <div class="form-field full"><label for="contact-company">Company / Organization</label><input id="contact-company" name="company" type="text" placeholder="Company Name (Optional)"></div>
-      <div class="form-field full"><label for="contact-service">How can I help?</label><select id="contact-service" name="service"><option>Administrative Support</option><option>Insurance Operations</option><option>Client &amp; Carrier Support</option><option>Agency Systems &amp; Workflow</option><option>Creative &amp; Digital Support</option><option>Other</option></select></div>
-      <div class="form-field full"><label for="contact-message">Message *</label><textarea id="contact-message" name="message" placeholder="Tell me about your business needs or projects..." required></textarea></div>
-    </div>
-    <button class="form-submit btn-animate" type="submit">Send Message ↗</button>
-    <p class="form-note">This opens your email client with your message ready to send.</p>
-  </form>
+<div class="contact-copy">
+<div class="kicker">Let's Connect</div>
+<h2>Looking for someone reliable to help move the work forward?</h2>
+<p>I'm available to support insurance agencies with reliable operations, administrative, client service, and workflow assistance.</p>
+<div class="contact-actions">
+<a class="btn btn-primary btn-animate contact-email" href="mailto:chpaulcervantes@gmail.com">Email Me</a>
+<a class="btn btn-secondary btn-animate contact-linkedin" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+<div class="contact-info"><span class="contact-chip">Davao City, Philippines</span><span class="contact-chip">Remote Ready</span><span class="contact-chip">Flexible Across US Time Zones</span></div>
+</div>
+<div class="calendly-wrapper">
+<div class="calendly-heading">
+<span class="calendly-label">Schedule a Call</span>
+<h3>Choose a time that works for you.</h3>
+<p>Select an available 30-minute slot below.</p>
+</div>
+<div class="calendly-inline-widget">
+<iframe
+src="https://calendly.com/chpaulcervantes/30min?hide_gdpr_banner=1"
+title="Schedule a call with Christian Paul Cervantes"
+loading="lazy"
+frameborder="0">
+</iframe>
+</div>
+</div>
 </div>
 </section>
 </main>
+
+<!-- LEARNING NOTE: This link is position:fixed, so it stays visible while scrolling. -->
+<!-- ==================== 12. FLOATING BOOK A CALL ==================== -->
+<a class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener" aria-label="Book a call with Christian Paul Cervantes">
+<span class="floating-book-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3" y="4.5" width="18" height="16" rx="2"></rect>
+<line x1="7" y1="2.5" x2="7" y2="6.5"></line>
+<line x1="17" y1="2.5" x2="17" y2="6.5"></line>
+<line x1="3" y1="9" x2="21" y2="9"></line>
+</svg>
+</span>
+<span>Book a Call</span>
+</a>
 
 <!-- ==================== 12. FOOTER ==================== -->
 <footer>© 2026 Christian Paul Cervantes • Insurance Agency Operations Specialist</footer>
 
 
-<!-- ==================== 13. FLOATING BOOK-A-CALL BUTTON ==================== -->
-<a class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener" aria-label="Book a call">
-  <span class="floating-book-icon">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor">
-      <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h5v5H7v-5z"/>
-    </svg>
-  </span>
-  <span>Book a Call</span>
-</a>
-
-
 <!-- ============================================================
-     JS 01 — SCROLL REVEAL / ANIMATION BEHAVIOR
-     ------------------------------------------------------------
-     CSS defines what the animation looks like.
-     JavaScript watches for elements entering the viewport
-     and adds the class "is-visible" to start the animation.
-     This block can be reused on another webpage.
-     ============================================================ -->
+JS 01 — SCROLL REVEAL / ANIMATION BEHAVIOR
+------------------------------------------------------------
+CSS defines what the animation looks like.
+JavaScript watches for elements entering the viewport
+and adds the class "is-visible" to start the animation.
+This block can be reused on another webpage.
+============================================================ -->
 <script>
-/* Scroll Reveal: elements animate when they enter the viewport. */
+  /* Scroll Reveal: elements animate when they enter the viewport. */
 (function () {
   const animatedItems = document.querySelectorAll('.reveal, .reveal-stagger');
 
   if (!animatedItems.length) return;
 
-  /* Respect accessibility settings automatically. */
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     animatedItems.forEach(item => item.classList.add('is-visible'));
     return;
@@ -1337,40 +1384,40 @@ footer{
 })();
 </script>
 
-<script>
-/* Compose a pre-filled email without sending form data to a server. */
-document.getElementById('quick-contact-form').addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (!this.reportValidity()) return;
-  const value = name => this.elements[name].value.trim();
-  const subject = `Website inquiry from ${value('name')}`;
-  const body = [
-    `Name: ${value('name')}`,
-    `Email: ${value('email')}`,
-    `Company / Organization: ${value('company') || 'Not provided'}`,
-    `How can I help?: ${value('service')}`,
-    '',
-    'Message:',
-    value('message')
-  ].join('\n');
-  window.location.href = `mailto:chpaulcervantes@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
-</script>
+
 
 
 <!-- ============================================================
-     WEB DEV LEARNING NOTE
-     ------------------------------------------------------------
-     When you edit this page:
-     1. HTML changes WHAT exists.
-     2. CSS changes HOW it looks.
-     3. JavaScript changes HOW it behaves.
+BEGINNER TROUBLESHOOTING CHEAT SHEET
+------------------------------------------------------------
+Want to change a COLOR?     → Find background:, color:, or a --variable.
+Want to change SIZE?       → Find font-size, width, height, or min-height.
+Want more SPACE inside?    → Change padding.
+Want more SPACE outside?   → Change margin.
+Want space between items?  → Change gap.
+Want rounded corners?      → Change border-radius.
+Want an element to move?   → Look for transform.
+Want a button/link to go somewhere else? → Change href="...".
+Want to replace a photo/logo? → Change img src="...".
+Want mobile behavior?      → Look inside @media (max-width: ...).
+Want an animation?         → Search for @keyframes or animation:.
+Want to understand JS?     → Look for querySelector, addEventListener,
+IntersectionObserver, or classList.
+============================================================ -->
 
-     Example:
-       <div class="tool">...</div>   ← HTML creates the card
-       .tool { ... }                 ← CSS styles the card
-       .reveal.is-visible { ... }    ← CSS defines the shown state
-       classList.add("is-visible")   ← JavaScript activates it
-     ============================================================ -->
+<!-- ============================================================
+WEB DEV LEARNING NOTE
+------------------------------------------------------------
+When you edit this page:
+1. HTML changes WHAT exists.
+2. CSS changes HOW it looks.
+3. JavaScript changes HOW it behaves.
+
+Example:
+<div class="tool">...</div>   ← HTML creates the card
+.tool { ... }                 ← CSS styles the card
+.reveal.is-visible { ... }    ← CSS defines the shown state
+classList.add("is-visible")   ← JavaScript activates it
+============================================================ -->
 </body>
 </html>
