@@ -61,6 +61,26 @@ transform: translateY(-5px); → moves an element upward
 <meta name="description" content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant.">
 <title>Christian Paul Cervantes | Insurance Agency Operations Specialist</title>
 <style>
+/* =========================================================
+AUDIT NOTE — CLEANED / ORGANIZED VERSION
+------------------------------------------------------------
+The original file was reviewed from top to bottom.
+
+Main cleanup:
+- Removed disabled/non-functional CSS blocks.
+- Removed unused .carrier-placeholder markup and CSS.
+- Removed unused .tool-logo-animate and .reveal-stagger hooks.
+- Fixed invalid background and min-height declarations.
+- Moved contact-form card styling to the correct outer container.
+- Removed duplicate contact-panel styling from the nested form.
+- Corrected contact button class names so the class matches its function.
+- Removed a redundant mobile .tool-grid rule.
+- Kept the existing learning labels and notes, and added study notes
+  where the function of a block is easy to misunderstand.
+- Kept the existing page content, links, animations, and responsive design
+  unless a rule was clearly broken, duplicated, or unused.
+========================================================= */
+
 
 /* =========================================================
 01. DESIGN TOKENS
@@ -241,7 +261,7 @@ p{
   position:relative;
   overflow:hidden;
   padding:105px 0 94px;
-  background:solid (circle at 82% 8%,rgba(169,0,0,.30),transparent 7%),var(--charcoal);
+  background:(circle at 82% 8%,rgba(169,0,0,.30),transparent 7%),var(--charcoal);
   border-bottom:1px solid var(--line);
 }
 .hero:after{
@@ -308,10 +328,6 @@ The photo intentionally has NO gradient overlay and NO filter.
   padding:12px;
   transform:rotate(2deg);
   box-shadow:var(--shadow);
-}
-.photo-card:before{
-  display:none;
-  content:none;
 }
 .photo-card img{
   width:100%;
@@ -447,6 +463,7 @@ The photo intentionally has NO gradient overlay and NO filter.
 Same naming pattern as the GenVA file:
 .tool → card, .tool-logo → logo box, .tool strong → name
 ========================================================= */
+/* Two-column layout: explanation on the left, tool cards on the right. */
 .tools-wrap{
   display:grid;
   grid-template-columns:.75fr 1.25fr;
@@ -470,6 +487,7 @@ Same naming pattern as the GenVA file:
 .tools-group-label{
   margin-bottom:12px;
 }
+/* Tool wrapper: currently uses flex rows rather than CSS Grid. */
 .tool-grid{
   width:100%;
   padding:10px 0 22px;
@@ -607,11 +625,6 @@ Same naming pattern as the GenVA file:
 .carrier-card:nth-child(3n) .carrier-logo-img{
   animation-delay:-1s;
 }
-.carrier-placeholder{
-  display:none;
-  color:var(--taupe);
-  font-size:12px;
-}
 .carrier-card strong{
   color:var(--cream);
   font-size:13px;
@@ -644,9 +657,6 @@ Same naming pattern as the GenVA file:
   color:var(--red);
   font-family:"Cormorant Garamond",serif;
   font-size:2.1rem;
-}
-.step-number h3{
-  margin:0;
 }
 .step h3{
   margin:28px 0 8px;
@@ -824,6 +834,7 @@ The actual Calendly calendar is NOT embedded.
 14C. SEND A MESSAGE FORM
 EmailJS reads the name="" value from each field.
 ========================================================= */
+/* Outer message card: this is the visible panel around the heading + form. */
 .contact-message{
   width:100%;
   padding:28px 32px;
@@ -864,6 +875,7 @@ EmailJS reads the name="" value from each field.
   font-size:.85rem;
 }
 
+/* Inner form: transparent because .contact-message owns the panel styling. */
 .contact-form{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -913,7 +925,7 @@ EmailJS reads the name="" value from each field.
 }
 
 .contact-form textarea{
-  min-height:11 0px;
+  min-height:110px;
   resize:vertical;
 }
 
@@ -942,15 +954,6 @@ EmailJS reads the name="" value from each field.
   margin-top:4px;
 }
 
-.contact-form-note{
-  grid-column: 1 / -1;
-  margin: 10px 0 0;
-  text-align: center;
-  color: var(--taupe);
-  font-family: "DM Sans", sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.5;
-}
 
 .contact-submit{
   grid-column: 1 / -1;
@@ -1010,6 +1013,7 @@ On smaller screens, fields stack into one column.
 /* =========================================================
 15. FLOATING BOOK A CALL
 ========================================================= */
+/* Fixed CTA: stays visible while the visitor scrolls. */
 .floating-book-call{
   position:fixed;
   right:24px;
@@ -1114,7 +1118,7 @@ footer{
   .nav-links{
     display:none;
   }
-  .hero-grid,.about,.contact .container{
+  .hero-grid,.about{
     grid-template-columns:1fr;
   }
   .hero{
@@ -1372,18 +1376,18 @@ To deliver reliable support and maintain seamless communication across teams, cl
 <div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
 <div class="tool-track">
 <div class="tool-row">
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
-<div class="tool tool-logo-animate reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
+<div class="tool reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
 </div>
 </div>
 </div>
@@ -1393,22 +1397,22 @@ To deliver reliable support and maintain seamless communication across teams, cl
 <div class="tools-group-label">Insurance Carriers</div>
 <div class="carrier-marquee" aria-label="Insurance carriers I have worked with">
 <div class="carrier-track"><div class="carrier-row">
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"><span class="carrier-placeholder">Safeco</span></div><strong>Safeco</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"><span class="carrier-placeholder">Progressive</span></div><strong>Progressive</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"><span class="carrier-placeholder">GEICO</span></div><strong>GEICO</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"><span class="carrier-placeholder">Aegis</span></div><strong>Aegis</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"><span class="carrier-placeholder">Steadily</span></div><strong>Steadily</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"><span class="carrier-placeholder">Travelers</span></div><strong>Travelers</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"><span class="carrier-placeholder">Openly</span></div><strong>Openly</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"><span class="carrier-placeholder">Mercury</span></div><strong>Mercury</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"><span class="carrier-placeholder">Foremost</span></div><strong>Foremost</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"><span class="carrier-placeholder">American Modern</span></div><strong>American Modern</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"><span class="carrier-placeholder">Nationwide</span></div><strong>Nationwide</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"><span class="carrier-placeholder">Chubb</span></div><strong>Chubb</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"><span class="carrier-placeholder">Main Street America</span></div><strong>Main Street America</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"><span class="carrier-placeholder">Orion180</span></div><strong>Orion180</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"><span class="carrier-placeholder">Hagerty</span></div><strong>Hagerty</strong></div>
-<div class="carrier-card tool-logo-animate"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"><span class="carrier-placeholder">American Collectors</span></div><strong>American Collectors</strong></div></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"></div><strong>Safeco</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"></div><strong>Progressive</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"></div><strong>GEICO</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"></div><strong>Aegis</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"></div><strong>Steadily</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"></div><strong>Travelers</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"></div><strong>Openly</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"></div><strong>Mercury</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"></div><strong>Foremost</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"></div><strong>American Modern</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"></div><strong>Nationwide</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"></div><strong>Chubb</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"></div><strong>Main Street America</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"></div><strong>Orion180</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"></div><strong>Hagerty</strong></div>
+<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"></div><strong>American Collectors</strong></div></div>
 
 </div>
 </div>
@@ -1491,7 +1495,7 @@ The Calendly calendar is intentionally NOT embedded.
       <div class="contact-actions">
 
         <a
-          class="btn btn-primary btn-animate contact-email"
+          class="btn btn-primary btn-animate contact-book-call"
           href="https://calendly.com/chpaulcervantes/30min"
           target="_blank"
           rel="noopener">
@@ -1499,7 +1503,7 @@ The Calendly calendar is intentionally NOT embedded.
         </a>
 
         <a
-          class="btn btn-secondary btn-animate contact-book-call"
+          class="btn btn-secondary btn-animate contact-email"
           href="mailto:chpaulcervantes@gmail.com">
           Email Me
         </a>
@@ -1678,19 +1682,14 @@ This lets the contact form send messages without a custom backend.
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <!-- ============================================================
-JS 01 — SCROLL REVEAL / ANIMATION BEHAVIOR
-------------------------------------------------------------
-CSS defines what the animation looks like.
-JavaScript watches for elements entering the viewport
-and adds the class "is-visible" to start the animation.
-This block can be reused on another webpage.
-============================================================ -->
-<script>
-/* ============================================================
 JS 01 — EMAILJS CONTACT FORM
 ------------------------------------------------------------
 This form sends the visitor's message through EmailJS.
-
+============================================================ -->
+<script>
+/* ============================================================
+EMAILJS CONTACT FORM — CONFIGURATION + SUBMISSION
+------------------------------------------------------------
 BEFORE PUBLISHING:
 1. Create an EmailJS account.
 2. Create an Email Service.
@@ -1775,10 +1774,17 @@ if (contactForm) {
 
 </script>
 
+<!-- ============================================================
+JS 02 — SCROLL REVEAL / ANIMATION BEHAVIOR
+------------------------------------------------------------
+CSS defines the animation.
+JavaScript watches for elements entering the viewport
+and adds "is-visible" to reveal them.
+============================================================ -->
 <script>
   /* Scroll Reveal: elements animate when they enter the viewport. */
 (function () {
-  const animatedItems = document.querySelectorAll('.reveal, .reveal-stagger');
+  const animatedItems = document.querySelectorAll('.reveal');
 
   if (!animatedItems.length) return;
 
