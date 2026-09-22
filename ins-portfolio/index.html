@@ -1,91 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!--
-============================================================
-WEB DEVELOPMENT MAP — QUICK GUIDE
-
-HOW TO STUDY THIS FILE
-------------------------------------------------------------
-1. HTML = what appears on the page.
-2. CSS = how those things look and where they sit.
-3. JavaScript = what happens after the page loads or when you interact.
-4. A CLASS (example: class="tool") is a reusable label used by CSS/JS.
-5. An ID (example: id="contact") identifies one specific element/section.
-6. CSS variables in :root let you change a color/size once and reuse it.
-7. Comments like this one do NOT appear on the website. They are notes for you.
-
-SAFE LEARNING METHOD
-------------------------------------------------------------
-Change ONE property at a time, save, refresh, and observe the result.
-Use Ctrl+F to search for the section/class you want to edit.
-If you break something, undo with Ctrl+Z.
-============================================================
-
-WEB DEVELOPMENT MAP — QUICK GUIDE
-------------------------------------------------------------
-HTML  = the STRUCTURE/content of the page
-CSS   = the LOOK/layout/spacing/colors/animations
-JavaScript = the BEHAVIOR/interactivity
-
-MAIN PAGE AREAS
-01. <head>                 → page settings + fonts
-02. :root / global CSS    → reusable colors and variables
-03. Navigation             → top menu/header
-04. Hero                   → first section users see
-05. About                  → introduction + stats
-06. Services               → service cards
-07. Tools                  → software/tool logo cards
-08. Insurance Carriers     → carrier logo cards
-09. Workflow               → process/steps
-10. Experience             → work history cards
-11. What You Can Expect    → strengths/cards
-12. Contact / Message     → direct contact + message form
-13. Floating Book a Call   → fixed booking button
-15. Footer                  → closing page information
-16. Animation CSS           → reusable visual effects
-17. Responsive CSS         → tablet/mobile behavior
-18. Animation JavaScript   → scroll-triggered reveal behavior
-
-TIP:
-When learning, change ONE small rule at a time and refresh.
-For example:
-color: red;          → changes a text/background color
-padding: 20px;       → changes inside spacing
-gap: 20px;           → changes space between flex/grid items
-transform: translateY(-5px); → moves an element upward
-============================================================
+ <head>
+  <!--
+| WEB DEVELOPMENT MAP — QUICK GUIDE
+| HOW TO STUDY THIS FILE
+| 1. HTML = what appears on the page.
+| 2. CSS = how those things look and where they sit.
+| 3. JavaScript = what happens after the page loads or when you interact.
+| 4. A CLASS (example: class="tool") is a reusable label used by CSS/JS.
+| 5. An ID (example: id="contact") identifies one specific element/section.
+| 6. CSS variables in :root let you change a color/size once and reuse it.
+| 7. Comments like this one do NOT appear on the website. They are notes for you.
+| SAFE LEARNING METHOD
+| Change ONE property at a time, save, refresh, and observe the result.
+| Use Ctrl+F to search for the section/class you want to edit.
+| If you break something, undo with Ctrl+Z.
+| WEB DEVELOPMENT MAP — QUICK GUIDE
+| HTML  = the STRUCTURE/content of the page
+| CSS   = the LOOK/layout/spacing/colors/animations
+| JavaScript = the BEHAVIOR/interactivity
+| MAIN PAGE AREAS
+| 01. <head>                 → page settings + fonts
+| 02. :root / global CSS    → reusable colors and variables
+| 03. Navigation             → top menu/header
+| 04. Hero                   → first section users see
+| 05. About                  → introduction + stats
+| 06. Services               → service cards
+| 07. Tools                  → software/tool logo cards
+| 08. Insurance Carriers     → carrier logo cards
+| 09. Workflow               → process/steps
+| 10. Experience             → work history cards
+| 11. What You Can Expect    → strengths/cards
+| 12. Contact / Message     → direct contact + message form
+| 13. Floating Book a Call   → fixed booking button
+| 15. Footer                  → closing page information
+| 16. Animation CSS           → reusable visual effects
+| 17. Responsive CSS         → tablet/mobile behavior
+| 18. Animation JavaScript   → scroll-triggered reveal behavior
+| TIP:
+| When learning, change ONE small rule at a time and refresh.
+| For example:
+| color: red;          → changes a text/background color
+| padding: 20px;       → changes inside spacing
+| gap: 20px;           → changes space between flex/grid items
+| transform: translateY(-5px); → moves an element upward
 -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant.">
-<title>Christian Paul Cervantes | Insurance Agency Operations Specialist</title>
-<style>
-/* =========================================================
-AUDIT NOTE — CLEANED / ORGANIZED VERSION
-------------------------------------------------------------
-The original file was reviewed from top to bottom.
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Christian Paul Cervantes — Insurance Agency Operations Specialist and Virtual Assistant." name="description"/>
+  <title>
+   Christian Paul Cervantes | Insurance Agency Operations Specialist
+  </title>
+  <style>
+   /*
+| AUDIT NOTE — CLEANED / ORGANIZED VERSION
+| The original file was reviewed from top to bottom.
+| Main cleanup:
+| - Removed disabled/non-functional CSS blocks.
+| - Removed unused .carrier-placeholder markup and CSS.
+| - Removed unused .tool-logo-animate and .reveal-stagger hooks.
+| - Fixed invalid background and min-height declarations.
+| - Moved contact-form card styling to the correct outer container.
+| - Removed duplicate contact-panel styling from the nested form.
+| - Corrected contact button class names so the class matches its function.
+| - Removed a redundant mobile .tool-grid rule.
+| - Kept the existing learning labels and notes, and added study notes
+| where the function of a block is easy to misunderstand.
+| - Kept the existing page content, links, animations, and responsive design
+| unless a rule was clearly broken, duplicated, or unused.
+*/
 
-Main cleanup:
-- Removed disabled/non-functional CSS blocks.
-- Removed unused .carrier-placeholder markup and CSS.
-- Removed unused .tool-logo-animate and .reveal-stagger hooks.
-- Fixed invalid background and min-height declarations.
-- Moved contact-form card styling to the correct outer container.
-- Removed duplicate contact-panel styling from the nested form.
-- Corrected contact button class names so the class matches its function.
-- Removed a redundant mobile .tool-grid rule.
-- Kept the existing learning labels and notes, and added study notes
-  where the function of a block is easy to misunderstand.
-- Kept the existing page content, links, animations, and responsive design
-  unless a rule was clearly broken, duplicated, or unused.
-========================================================= */
 
-
-/* =========================================================
-01. DESIGN TOKENS
-Change the values here to update the whole website.
-========================================================= */
+/*
+| 01. DESIGN TOKENS
+| Change the values here to update the whole website.
+*/
 :root{
   --charcoal:#111111;
   --red:#A90000;
@@ -98,9 +87,9 @@ Change the values here to update the whole website.
   --radius:22px;
   --max-width:1180px;
 }
-/* =========================================================
-02. GLOBAL STYLES
-========================================================= */
+/*
+| 02. GLOBAL STYLES
+*/
 *{
   box-sizing:border-box;
 }
@@ -131,11 +120,11 @@ section{
   padding:104px 0;
   background:var(--charcoal);
 }
-/* =========================================================
-03. TYPOGRAPHY
-DM Sans = body/interface text
-Cormorant Garamond = large editorial headings
-========================================================= */
+/*
+| 03. TYPOGRAPHY
+| DM Sans = body/interface text
+| Cormorant Garamond = large editorial headings
+*/
 h1,h2{
   font-family:"Cormorant Garamond",serif;
   font-weight:600;
@@ -196,9 +185,9 @@ p{
   color:var(--taupe);
   font-size:18px;
 }
-/* =========================================================
-04. HEADER / NAVIGATION
-========================================================= */
+/*
+| 04. HEADER / NAVIGATION
+*/
 .nav{
   position:sticky;
   top:0;
@@ -255,14 +244,14 @@ p{
   color:var(--cream);
   font-weight:700;
 }
-/* =========================================================
-05. HERO SECTION
-========================================================= */
+/*
+| 05. HERO SECTION
+*/
 .hero{
   position:relative;
   overflow:hidden;
   padding:105px 0 94px;
-  background:(circle at 82% 8%,rgba(169,0,0,.30),transparent 7%),var(--charcoal);
+  background:radial-gradient(circle at 82% 8%,rgba(169,0,0,.30),transparent 28%),var(--charcoal);
   border-bottom:1px solid var(--line);
 }
 .hero:after{
@@ -316,10 +305,10 @@ p{
   color:var(--cream);
   border-color:rgba(241,236,227,.38);
 }
-/* =========================================================
-06. PROFILE PHOTO
-The photo intentionally has NO gradient overlay and NO filter.
-========================================================= */
+/*
+| 06. PROFILE PHOTO
+| The photo intentionally has NO gradient overlay and NO filter.
+*/
 .photo-card{
   position:relative;
   min-height:500px;
@@ -352,9 +341,9 @@ The photo intentionally has NO gradient overlay and NO filter.
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-/* =========================================================
-07. ABOUT SECTION
-========================================================= */
+/*
+| 07. ABOUT SECTION
+*/
 .tagline {
   margin-bottom: 20px;
 }
@@ -409,9 +398,9 @@ The photo intentionally has NO gradient overlay and NO filter.
   font-size:14px;
   font-weight:700;
 }
-/* =========================================================
-08. SERVICES SECTION
-========================================================= */
+/*
+| 08. SERVICES SECTION
+*/
 .services,.expect{
   background:#171717;
 }
@@ -462,11 +451,11 @@ The photo intentionally has NO gradient overlay and NO filter.
   font-size:13px;
   font-weight:700;
 }
-/* =========================================================
-09. TOOLS
-Same naming pattern as the GenVA file:
-.tool → card, .tool-logo → logo box, .tool strong → name
-========================================================= */
+/*
+| 09. TOOLS
+| Same naming pattern as the GenVA file:
+| .tool → card, .tool-logo → logo box, .tool strong → name
+*/
 /* Two-column layout: explanation on the left, tool cards on the right. */
 .tools-wrap{
   display:grid;
@@ -562,9 +551,9 @@ Same naming pattern as the GenVA file:
   font-size:16px;
   line-height:1.2;
 }
-/* =========================================================
-10. INSURANCE CARRIERS
-========================================================= */
+/*
+| 10. INSURANCE CARRIERS
+*/
 .carriers-group{
   border-top:1px solid var(--line);
   padding-top:28px;
@@ -634,9 +623,9 @@ Same naming pattern as the GenVA file:
   font-size:13px;
   line-height:1.15;
 }
-/* =========================================================
-11. WORKFLOW
-========================================================= */
+/*
+| 11. WORKFLOW
+*/
 .process{
   background:var(--graphite);
   color:var(--cream);
@@ -671,9 +660,9 @@ Same naming pattern as the GenVA file:
   margin:0;
   font-size:16px;
 }
-/* =========================================================
-12. EXPERIENCE
-========================================================= */
+/*
+| 12. EXPERIENCE
+*/
 .experience-list{
   display:grid;
   gap:16px;
@@ -707,9 +696,9 @@ Same naming pattern as the GenVA file:
   color:var(--taupe);
   font-size:16px;
 }
-/* =========================================================
-13. WHAT YOU CAN EXPECT
-========================================================= */
+/*
+| 13. WHAT YOU CAN EXPECT
+*/
 .expect-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -731,14 +720,14 @@ Same naming pattern as the GenVA file:
   color:var(--taupe);
   font-size:16px;
 }
-/* =========================================================
-14. CONTACT / MESSAGE
-This section contains:
-- direct contact buttons
-- the EmailJS message form
-- the Calendly Book a Call button
-The actual Calendly calendar is NOT embedded.
-========================================================= */
+/*
+| 14. CONTACT / MESSAGE
+| This section contains:
+| - direct contact buttons
+| - the EmailJS message form
+| - the Calendly Book a Call button
+| The actual Calendly calendar is NOT embedded.
+*/
 .contact{
   padding:110px 0;
   background:var(--charcoal);
@@ -752,9 +741,9 @@ The actual Calendly calendar is NOT embedded.
   align-items:start;
 }
 
-/* =========================================================
-14A. CONTACT INTRO
-========================================================= */
+/*
+| 14A. CONTACT INTRO
+*/
 .contact-copy{
   max-width:900px;
 }
@@ -779,9 +768,9 @@ The actual Calendly calendar is NOT embedded.
   font-size:1.05rem;
 }
 
-/* =========================================================
-14B. EMAIL / LINKEDIN / BOOK A CALL BUTTONS
-========================================================= */
+/*
+| 14B. EMAIL / LINKEDIN / BOOK A CALL BUTTONS
+*/
 .contact-actions{
   display:flex;
   flex-wrap:wrap;
@@ -839,10 +828,10 @@ The actual Calendly calendar is NOT embedded.
   font-size:15px;
 }
 
-/* =========================================================
-14C. SEND A MESSAGE FORM
-EmailJS reads the name="" value from each field.
-========================================================= */
+/*
+| 14C. SEND A MESSAGE FORM
+| EmailJS reads the name="" value from each field.
+*/
 /* Outer message card: this is the visible panel around the heading + form. */
 .contact-message{
   width:100%;
@@ -973,7 +962,7 @@ EmailJS reads the name="" value from each field.
 
 .contact-form-status{
   min-height:24px;
-  margin:16px 0 0;
+  margin:10px 0 0;
   font-size:14px;
   font-weight:700;
 }
@@ -986,10 +975,10 @@ EmailJS reads the name="" value from each field.
   color:#F0A8A8;
 }
 
-/* =========================================================
-14D. CONTACT FORM — MOBILE
-On smaller screens, fields stack into one column.
-========================================================= */
+/*
+| 14D. CONTACT FORM — MOBILE
+| On smaller screens, fields stack into one column.
+*/
 @media(max-width:900px){
   .contact .container{
     grid-template-columns:1fr;
@@ -1019,9 +1008,9 @@ On smaller screens, fields stack into one column.
   }
 }
 
-/* =========================================================
-15. FLOATING BOOK A CALL
-========================================================= */
+/*
+| 15. FLOATING BOOK A CALL
+*/
 /* Fixed CTA: stays visible while the visitor scrolls. */
 .floating-book-call{
   position:fixed;
@@ -1055,9 +1044,9 @@ On smaller screens, fields stack into one column.
   background:var(--cream);
   color:var(--red);
 }
-/* =========================================================
-16. FOOTER
-========================================================= */
+/*
+| 16. FOOTER
+*/
 footer{
   background:var(--charcoal);
   color:var(--taupe);
@@ -1066,9 +1055,9 @@ footer{
   text-align:center;
   font-size:14px;
 }
-/* =========================================================
-17. ANIMATIONS
-========================================================= */
+/*
+| 17. ANIMATIONS
+*/
 .reveal{
   opacity:0;
   transform:translateY(28px);
@@ -1120,9 +1109,9 @@ footer{
     transform:translateY(-3px) scale(1.025);
   }
 }
-/* =========================================================
-18. RESPONSIVE / MOBILE
-========================================================= */
+/*
+| 18. RESPONSIVE / MOBILE
+*/
 @media(max-width:900px){
   .nav-links{
     display:none;
@@ -1292,425 +1281,1274 @@ footer{
     transition:none;
   }
 }
-</style>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<!-- LEARNING NOTE: Change the text inside .brand to change your name. Change href values to change where navigation links go. -->
-<!-- ==================== 03. NAVIGATION / HEADER ==================== -->
-<header class="nav">
-<div class="container nav-inner">
-<a class="brand" href="#top"><span class="brand-logo-placeholder"><img src="images/profile.jpg" alt="Christian Paul Cervantes"></span><span>Christian Paul Cervantes</span></a>
-<nav class="nav-links"><a href="#about">About</a><a href="#services">Services</a><a href="#tools">Tools</a><a href="#experience">Experience</a></nav>
-<a class="nav-cta btn-animate" href="#contact">Let's Connect</a>
-</div>
-</header>
-
-<main id="top">
-
-<!-- LEARNING NOTE: The hero contains your main headline, intro, buttons, and profile photo. -->
-<!-- ==================== 04. HERO SECTION ==================== -->
-<section class="hero">
-<div class="container hero-grid">
-<div>
-<div class="eyebrow">Insurance Agency Operations Specialist • Virtual Assistant</div>
-<h1>Reliable operations support for insurance agencies.</h1>
-<p class="hero-copy">I support insurance agencies with day-to-day operations, client service, policy workflows, documentation, renewals, system management, and administrative coordination.</p>
-<div class="hero-actions"><a class="btn btn-primary btn-animate" href="#services">Explore My Services</a><a class="btn btn-secondary btn-animate" href="#contact">Work With Me</a></div>
-</div>
-<div class="photo-card">
-<img src="images/profile.jpg" alt="Christian Paul Cervantes professional portrait">
-<div class="photo-label">Insurance Agency Operations • Remote Support</div>
-</div>
-</div>
-</section>
 
 
-<!-- LEARNING NOTE: Edit the paragraph/stat text here without touching the CSS. -->
-<!-- ==================== 05. ABOUT SECTION ==================== -->
-<section id="about">
-<div class="container about">
-<div class="about-image"><img src="images/portrait.jpg" alt="Christian Paul Cervantes"></div>
-<div class="about-copy">
-<div class="kicker">About Me</div>
-<p class = "tagline"> <h2>Adaptable, dependable, and ready to contribute.</h2></p>
-<p>I'm an Insurance Agency Operations Specialist with hands-on experience supporting day-to-day agency operations, administrative workflows, customer service, and digital systems.</p>
-<p>My background includes supporting US-based insurance teams, managing detail-oriented workflows, communicating with clients and carrier partners, organizing policy information, handling renewals, and working across agency systems.</p>
-<p>I bring strong organization, follow-through, communication, and problem-solving skills to insurance agencies that need dependable operational support.</p>
-<div class="stats">
-<div class="stat"><strong>4+</strong><span>Years of professional support experience</span></div>
-<div class="stat"><strong>US</strong><span>Experience supporting US-based teams</span></div>
-<div class="stat"><strong>Remote</strong><span>Ready for distributed teams</span></div>
-</div>
-</div>
-</div>
-</section>
+/*
+| 19. RESPONSIVE HARDENING / MOBILE POLISH
+| These overrides intentionally sit after the original rules so the
+| mobile layout stays predictable without changing the visual direction.
+*/
+body{
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+section{
+  scroll-margin-top:90px;
+}
+.nav-inner{
+  min-width:0;
+}
+.nav-cta{
+  white-space:nowrap;
+}
+.nav-toggle{
+  display:none;
+  width:42px;
+  height:42px;
+  padding:9px;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--graphite);
+  color:var(--cream);
+  cursor:pointer;
+  flex:0 0 42px;
+}
+.nav-toggle span{
+  display:block;
+  width:100%;
+  height:2px;
+  margin:5px 0;
+  background:currentColor;
+  transition:transform .2s ease,opacity .2s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
+/* Prevent the form from becoming a second card inside the message card. */
+.contact-message{
+  min-width:0;
+}
+.contact-form{
+  gap:16px;
+  margin:0;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  min-width:0;
+}
+.contact-form-group{
+  min-width:0;
+}
+.contact-form-footer{
+  justify-content:flex-start;
+  margin-top:2px;
+}
+.contact-submit{
+  width:100%;
+  min-height:52px;
+}
 
-<!-- LEARNING NOTE: Duplicate a .card block to create another service card. -->
-<!-- ==================== 06. SERVICES SECTION ==================== -->
-<section id="services" class="services">
-<div class="container">
-<div class="section-head"><div><div class="kicker">What I Do</div><h2>How I can help.</h2></div>
-<p class="section-intro">Focused support for insurance agencies, with additional administrative, customer service, and digital capabilities.</p></div>
-<div class="cards">
-<article class="card"><div class="card-icon">01</div><h3>Insurance Agency Operations</h3><p>Support the workflows that keep an insurance agency organized and moving.</p><div class="tags"><span class="tag">Policy processing</span><span class="tag">Renewals</span><span class="tag">AMS (EZLynx)</span><span class="tag">Agency workflows</span><span class="tag">Documentation</span></div></article>
-<article class="card"><div class="card-icon">02</div><h3>Client & Carrier Support</h3><p>Keep communication professional, timely, and organized across clients and carrier partners.</p><div class="tags"><span class="tag">Client communication</span><span class="tag">Carrier communication</span><span class="tag">Follow-ups</span><span class="tag">Email support</span><span class="tag">Phone support</span></div></article>
-<article class="card"><div class="card-icon">03</div><h3>Agency Systems & Workflow</h3><p>Maintain accurate information and organized processes across the systems agencies rely on.</p><div class="tags"><span class="tag">EZLynx</span><span class="tag">AgencyZoom</span><span class="tag">AMS workflows</span><span class="tag">Data updates</span><span class="tag">File management</span></div></article>
-<article class="card"><div class="card-icon">04</div><h3>Creative & Digital Support</h3><p>Assist with practical digital content and visual tasks for day-to-day business needs.</p><div class="tags"><span class="tag">Canva</span><span class="tag">CapCut</span><span class="tag">Social media</span><span class="tag">Content scheduling</span><span class="tag">Basic photo editing</span></div></article>
-</div>
-</div>
-</section>
+@media (max-width:900px){
+  .nav-inner{
+    position:relative;
+  }
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 1px);
+    left:0;
+    right:0;
+    z-index:60;
+    flex-direction:column;
+    gap:0;
+    padding:8px;
+    background:rgba(23,23,23,.98);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .nav-links.is-open{
+    display:flex;
+  }
+  .nav-links a{
+    padding:13px 12px;
+    border-bottom:1px solid rgba(241,236,227,.08);
+  }
+  .nav-links a:last-child{
+    border-bottom:0;
+  }
+  .nav-toggle{
+    display:block;
+  }
 
+  .hero-grid,.about{
+    gap:40px;
+  }
+  .hero-copy{
+    font-size:20px;
+  }
+  .photo-card{
+    max-width:520px;
+    margin-inline:auto;
+  }
+  .tools-wrap{
+    gap:40px;
+  }
+  .process-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .contact .container{
+    min-width:0;
+  }
+}
 
-<!-- LEARNING NOTE: Change an image src="..." to replace a logo. Change alt="..." for accessibility. -->
-<!-- ==================== 07. TOOLS + INSURANCE CARRIERS ==================== -->
-<section id="tools">
-<div class="container tools-wrap">
-<div class="tools-copy">
-<div class="kicker">Tools & Insurance Systems</div>
-<h2>Tools I use.</h2>
-<p>My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms to keep day-to-day business operations organized, efficient, and running smoothly.
-To deliver reliable support and maintain seamless communication across teams, clients, and partners, I regularly utilize industry-standard software and systems.</p>
-<p><strong>These are the core tools and insurance carrier platforms I've worked with.</strong></p>
-</div>
+@media (max-width:650px){
+  .container{
+    width:min(calc(100% - 30px),var(--max-width));
+  }
+  body{
+    font-size:16px;
+  }
+  .brand-name{
+    max-width:155px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:13px;
+  }
+  .nav-cta{
+    padding:8px 12px;
+    font-size:12px;
+  }
+  .nav-toggle{
+    width:40px;
+    height:40px;
+    flex-basis:40px;
+  }
+  .hero{
+    padding:72px 0 70px;
+  }
+  .hero h1{
+    font-size:clamp(3.15rem,15vw,4.8rem);
+    line-height:.9;
+  }
+  .hero-copy{
+    font-size:18px;
+  }
+  .hero-actions{
+    width:100%;
+  }
+  .hero-actions .btn{
+    width:100%;
+  }
+  .photo-card{
+    min-height:0;
+    padding:8px;
+    transform:none;
+  }
+  .photo-card img{
+    height:auto;
+    aspect-ratio:4 / 5;
+    object-fit:cover;
+  }
+  .cards,.stats,.expect-grid{
+    grid-template-columns:1fr;
+  }
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+  .section-head{
+    display:block;
+    padding-bottom:22px;
+    margin-bottom:28px;
+  }
+  .section-head h2{
+    font-size:clamp(2.7rem,12vw,4rem);
+  }
+  .section-intro{
+    margin-top:16px;
+    font-size:16px;
+  }
+  .tool-row{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    width:100%;
+  }
+  .tool{
+    width:100%;
+    min-width:0;
+    flex:none;
+    height:auto;
+    min-height:0;
+    aspect-ratio:1 / 1;
+  }
+  .tool-logo{
+    width:72px;
+    height:72px;
+    flex-basis:72px;
+    margin-bottom:8px;
+  }
+  .tool strong{
+    min-height:auto;
+    font-size:14px;
+  }
+  .carrier-row{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    width:100%;
+  }
+  .carrier-card{
+    width:100%;
+    min-width:0;
+    flex:none;
+    min-height:118px;
+  }
+  .carrier-logo{
+    width:92px;
+    max-width:100%;
+  }
+  .experience{
+    padding:24px 20px;
+  }
+  .contact{
+    padding:78px 0 96px;
+  }
+  .contact-message{
+    padding:22px 18px;
+  }
+  .contact-message-heading{
+    margin-bottom:22px;
+  }
+  .contact-message-heading h3{
+    font-size:2rem;
+  }
+  .contact-form{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .contact-form-group.full-width{
+    grid-column:auto;
+  }
+  .contact-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+  }
+  .contact-actions .btn{
+    width:100%;
+  }
+  .contact-info{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .contact-chip{
+    text-align:center;
+  }
+  .floating-book-call{
+    right:12px;
+    bottom:12px;
+    padding:10px 14px;
+    font-size:.82rem;
+  }
+}
 
-<div class="tools-showcase">
-<div class="tools-group">
-<div class="tools-group-label">Agency, Productivity & Operations</div>
-<div class="tool-grid tool-grid-main" aria-label="Agency, productivity and operations tools">
-<div class="tool-track">
-<div class="tool-row">
-<div class="tool reveal"><div class="tool-logo"><img src="tools/EZ.png" alt="EZLynx"></div><strong>EZLynx</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/AZ.png" alt="AgencyZoom"></div><strong>AgencyZoom</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Goo.png" alt="Google Workspace"></div><strong>Google Workspace</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Out.png" alt="Outlook"></div><strong>Outlook</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Teams.png" alt="Microsoft Teams"></div><strong>Microsoft Teams</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Sla.png" alt="Slack"></div><strong>Slack</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Zoom.png" alt="Zoom"></div><strong>Zoom</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Can.png" alt="Canva"></div><strong>Canva</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Cap.png" alt="CapCut"></div><strong>CapCut</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/gpt.png" alt="ChatGPT"></div><strong>ChatGPT</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Non.png" alt="Notion"></div><strong>Notion</strong></div>
-<div class="tool reveal"><div class="tool-logo"><img src="tools/Adobe.png" alt="Adobe Acrobat"></div><strong>Adobe Acrobat</strong></div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="tools-group carriers-group">
-<div class="tools-group-label">Insurance Carriers</div>
-<div class="carrier-marquee" aria-label="Insurance carriers I have worked with">
-<div class="carrier-track"><div class="carrier-row">
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/safeco.png" alt="Safeco logo" class="carrier-logo-img"></div><strong>Safeco</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/progressive.png" alt="Progressive logo" class="carrier-logo-img"></div><strong>Progressive</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/geico.png" alt="GEICO logo" class="carrier-logo-img"></div><strong>GEICO</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/aegis.png" alt="Aegis logo" class="carrier-logo-img"></div><strong>Aegis</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/steadily.png" alt="Steadily logo" class="carrier-logo-img"></div><strong>Steadily</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/travelers.png" alt="Travelers logo" class="carrier-logo-img"></div><strong>Travelers</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/openly.png" alt="Openly logo" class="carrier-logo-img"></div><strong>Openly</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/mercury.png" alt="Mercury logo" class="carrier-logo-img"></div><strong>Mercury</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/foremost.png" alt="Foremost logo" class="carrier-logo-img"></div><strong>Foremost</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-modern.png" alt="American Modern logo" class="carrier-logo-img"></div><strong>American Modern</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/nationwide.png" alt="Nationwide logo" class="carrier-logo-img"></div><strong>Nationwide</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/chubb.png" alt="Chubb logo" class="carrier-logo-img"></div><strong>Chubb</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/MSA.png" alt="MSA logo" class="carrier-logo-img"></div><strong>Main Street America</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/orion180.png" alt="Orion180 logo" class="carrier-logo-img"></div><strong>Orion180</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/hagerty.png" alt="Hagerty logo" class="carrier-logo-img"></div><strong>Hagerty</strong></div>
-<div class="carrier-card"><div class="carrier-logo"><img src="images/carriers/american-collectors.png" alt="American Collectors logo" class="carrier-logo-img"></div><strong>American Collectors</strong></div></div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-
-<!-- LEARNING NOTE: Each .step is one workflow stage. Duplicate a .step to add another stage. -->
-<!-- ==================== 08. WORKFLOW / PROCESS SECTION ==================== -->
-<section class="process">
-<div class="container">
-<div class="section-head"><div><div class="kicker">My Workflow</div><h2>Simple. Organized. Effective.</h2></div><p class="section-intro">I follow a clear process to keep tasks moving and deliver dependable work.</p></div>
-<div class="process-grid">
-<div class="step hover-lift reveal"><div class="step-number"><h3>1</h3></div><h3>Receive</h3><p>Understand the request, priority, and desired outcome.</p></div>
-<div class="step hover-lift reveal"><div class="step-number"><h3>2</h3></div><h3>Review</h3><p>Check information and identify what is needed.</p></div>
-<div class="step hover-lift reveal"><div class="step-number"><h3>3</h3></div><h3>Process</h3><p>Complete the work carefully using the right tools.</p></div>
-<div class="step hover-lift reveal"><div class="step-number"><h3>4</h3></div><h3>Verify</h3><p>Review the result for accuracy and completeness.</p></div>
-<div class="step hover-lift reveal"><div class="step-number"><h3>5</h3></div><h3>Deliver</h3><p>Communicate the result and document next steps.</p></div>
-</div>
-</div>
-</section>
-
-
-<!-- LEARNING NOTE: Each <article class="experience"> is one job/role entry. -->
-<!-- ==================== 09. EXPERIENCE SECTION ==================== -->
-<section id="experience">
-<div class="container">
-<div class="section-head"><div><div class="kicker">Relevant Experience</div><h2>Experience I can bring to your team.</h2></div><p class="section-intro">My previous roles gave me experience across operations, customer support, documentation, communication, and technical problem-solving.</p></div>
-<div class="experience-list">
-<article class="experience"><div class="experience-meta">Oct 2022 – Mar 2027<br>Operations Support</div><div><h3>Lava Automation Corp.</h3><h4>The Weikum Group</h4><p>Supported day-to-day business operations through workflow coordination, documentation, client and partner communication, system updates, renewals, research, and digital content support.</p></div></article>
-<article class="experience"><div class="experience-meta">Feb 2021 – Aug 2022<br>Customer & Claims Support</div><div><h3>Teleperformance</h3><h4>BCBS Florida Blue</h4><p>Handled high-volume customer inquiries, claims concerns, escalations, email correspondence, and team support while serving as an interim team lead for a two-week period.</p></div></article>
-<article class="experience"><div class="experience-meta">Jul 2020 – Dec 2020<br>Technical Support</div><div><h3>VXI Global Holdings </h3><h4>Comcast / Xfinity Home</h4><p>Provided remote technical support for US-based customers, troubleshooting connectivity issues and maintaining detailed case documentation in a high-volume environment.</p></div></article>
-</div>
-</div>
-</section>
-
-
-<!-- LEARNING NOTE: Each .expect-card is one strength/value card. -->
-<!-- ==================== 10. WHAT YOU CAN EXPECT ==================== -->
-<section class="expect">
-<div class="container">
-<div class="section-head"><div><div class="kicker">What You Can Expect</div><h2>A support partner who keeps learning.</h2></div><p class="section-intro">I bring transferable skills while staying open to new industries, tools, processes, and responsibilities.</p></div>
-<div class="expect-grid">
-<div class="expect-card hover-lift reveal"><h3>Dependable & Proactive</h3><p>I take ownership of assigned tasks and follow through.</p></div>
-<div class="expect-card hover-lift reveal"><h3>Quick Learner</h3><p>I adapt to new systems and workflows with curiosity.</p></div>
-<div class="expect-card hover-lift reveal"><h3>Clear Communicator</h3><p>I keep teammates and clients informed throughout the work.</p></div>
-<div class="expect-card hover-lift reveal"><h3>Professional & Respectful</h3><p>I value your time, processes, goals, and business.</p></div>
-</div>
-</div>
-</section>
-
-
-<!-- LEARNING NOTE:
-Email, LinkedIn, and Book a Call are normal links.
-The message form is connected to EmailJS through JavaScript below.
-The Calendly calendar is intentionally NOT embedded.
+@media (max-width:380px){
+  .container{
+    width:min(calc(100% - 24px),var(--max-width));
+  }
+  .brand-name{
+    max-width:105px;
+    font-size:12px;
+  }
+  .nav-cta{
+    padding:8px 10px;
+    font-size:11px;
+  }
+  .hero{
+    padding-top:62px;
+  }
+  .hero h1{
+    font-size:clamp(2.9rem,14.5vw,4.3rem);
+  }
+  .photo-label{
+    bottom:14px;
+    width:calc(100% - 28px);
+  }
+  .tool-logo{
+    width:64px;
+    height:64px;
+    flex-basis:64px;
+  }
+  .carrier-card{
+    min-height:110px;
+  }
+  .carrier-logo{
+    width:82px;
+    height:56px;
+  }
+}
+  </style>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- LEARNING NOTE: Change the text inside .brand to change your name. Change href values to change where navigation links go. -->
+  <!--
+| 03. NAVIGATION / HEADER
 -->
-<!-- ==================== 11. CONTACT / CTA SECTION ==================== -->
-<!-- Desktop: Let's Connect stays on the LEFT; Send a Message stays on the RIGHT. -->
-<section id="contact" class="contact">
-  <div class="container">
-
-    <!-- ==================== 11A. CONTACT INTRO ==================== -->
-    <div class="contact-copy">
-      <div class="kicker">Let's Connect</div>
-
-      <h2>Looking for someone reliable to help move the work forward?</h2>
-
+  <header class="nav">
+   <div class="container nav-inner">
+    <a aria-label="Christian Paul Cervantes home" class="brand" href="#top">
+     <span class="brand-logo-placeholder">
+      <img alt="Christian Paul Cervantes" src="images/profile.jpg"/>
+     </span>
+     <span class="brand-name">
+      Christian Paul Cervantes
+     </span>
+    </a>
+    <nav aria-label="Primary navigation" class="nav-links" id="site-nav">
+     <a href="#about">
+      About
+     </a>
+     <a href="#services">
+      Services
+     </a>
+     <a href="#tools">
+      Tools
+     </a>
+     <a href="#experience">
+      Experience
+     </a>
+    </nav>
+    <a class="nav-cta btn-animate" href="#contact">
+     Let's Connect
+    </a>
+    <button aria-controls="site-nav" aria-expanded="false" aria-label="Open navigation" class="nav-toggle" type="button">
+     <span>
+     </span>
+     <span>
+     </span>
+     <span>
+     </span>
+    </button>
+   </div>
+  </header>
+  <main id="top">
+   <!-- LEARNING NOTE: The hero contains your main headline, intro, buttons, and profile photo. -->
+   <!--
+| 04. HERO SECTION
+-->
+   <section class="hero">
+    <div class="container hero-grid">
+     <div>
+      <div class="eyebrow">
+       Insurance Agency Operations Specialist • Virtual Assistant
+      </div>
+      <h1>
+       Reliable operations support for insurance agencies.
+      </h1>
+      <p class="hero-copy">
+       I support insurance agencies with day-to-day operations, client service, policy workflows, documentation, renewals, system management, and administrative coordination.
+      </p>
+      <div class="hero-actions">
+       <a class="btn btn-primary btn-animate" href="#services">
+        Explore My Services
+       </a>
+       <a class="btn btn-secondary btn-animate" href="#contact">
+        Work With Me
+       </a>
+      </div>
+     </div>
+     <div class="photo-card">
+      <img alt="Christian Paul Cervantes professional portrait" src="images/profile.jpg"/>
+      <div class="photo-label">
+       Insurance Agency Operations • Remote Support
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Edit the paragraph/stat text here without touching the CSS. -->
+   <!--
+| 05. ABOUT SECTION
+-->
+   <section id="about">
+    <div class="container about">
+     <div class="about-image">
+      <img alt="Christian Paul Cervantes" loading="lazy" src="images/portrait.jpg"/>
+     </div>
+     <div class="about-copy">
+      <div class="kicker">
+       About Me
+      </div>
+      <div class="tagline">
+       <h2>
+        Adaptable, dependable, and ready to contribute.
+       </h2>
+      </div>
       <p>
-        I'm available to support insurance agencies with reliable operations,
+       I'm an Insurance Agency Operations Specialist with hands-on experience supporting day-to-day agency operations, administrative workflows, customer service, and digital systems.
+      </p>
+      <p>
+       My background includes supporting US-based insurance teams, managing detail-oriented workflows, communicating with clients and carrier partners, organizing policy information, handling renewals, and working across agency systems.
+      </p>
+      <p>
+       I bring strong organization, follow-through, communication, and problem-solving skills to insurance agencies that need dependable operational support.
+      </p>
+      <div class="stats">
+       <div class="stat">
+        <strong>
+         4+
+        </strong>
+        <span>
+         Years of professional support experience
+        </span>
+       </div>
+       <div class="stat">
+        <strong>
+         US
+        </strong>
+        <span>
+         Experience supporting US-based teams
+        </span>
+       </div>
+       <div class="stat">
+        <strong>
+         Remote
+        </strong>
+        <span>
+         Ready for distributed teams
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Duplicate a .card block to create another service card. -->
+   <!--
+| 06. SERVICES SECTION
+-->
+   <section class="services" id="services">
+    <div class="container">
+     <div class="section-head">
+      <div>
+       <div class="kicker">
+        What I Do
+       </div>
+       <h2>
+        How I can help.
+       </h2>
+      </div>
+      <p class="section-intro">
+       Focused support for insurance agencies, with additional administrative, customer service, and digital capabilities.
+      </p>
+     </div>
+     <div class="cards">
+      <article class="card">
+       <div class="card-icon">
+        01
+       </div>
+       <h3>
+        Insurance Agency Operations
+       </h3>
+       <p>
+        Support the workflows that keep an insurance agency organized and moving.
+       </p>
+       <div class="tags">
+        <span class="tag">
+         Policy processing
+        </span>
+        <span class="tag">
+         Renewals
+        </span>
+        <span class="tag">
+         AMS (EZLynx)
+        </span>
+        <span class="tag">
+         Agency workflows
+        </span>
+        <span class="tag">
+         Documentation
+        </span>
+       </div>
+      </article>
+      <article class="card">
+       <div class="card-icon">
+        02
+       </div>
+       <h3>
+        Client & Carrier Support
+       </h3>
+       <p>
+        Keep communication professional, timely, and organized across clients and carrier partners.
+       </p>
+       <div class="tags">
+        <span class="tag">
+         Client communication
+        </span>
+        <span class="tag">
+         Carrier communication
+        </span>
+        <span class="tag">
+         Follow-ups
+        </span>
+        <span class="tag">
+         Email support
+        </span>
+        <span class="tag">
+         Phone support
+        </span>
+       </div>
+      </article>
+      <article class="card">
+       <div class="card-icon">
+        03
+       </div>
+       <h3>
+        Agency Systems & Workflow
+       </h3>
+       <p>
+        Maintain accurate information and organized processes across the systems agencies rely on.
+       </p>
+       <div class="tags">
+        <span class="tag">
+         EZLynx
+        </span>
+        <span class="tag">
+         AgencyZoom
+        </span>
+        <span class="tag">
+         AMS workflows
+        </span>
+        <span class="tag">
+         Data updates
+        </span>
+        <span class="tag">
+         File management
+        </span>
+       </div>
+      </article>
+      <article class="card">
+       <div class="card-icon">
+        04
+       </div>
+       <h3>
+        Creative & Digital Support
+       </h3>
+       <p>
+        Assist with practical digital content and visual tasks for day-to-day business needs.
+       </p>
+       <div class="tags">
+        <span class="tag">
+         Canva
+        </span>
+        <span class="tag">
+         CapCut
+        </span>
+        <span class="tag">
+         Social media
+        </span>
+        <span class="tag">
+         Content scheduling
+        </span>
+        <span class="tag">
+         Basic photo editing
+        </span>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Change an image src="..." to replace a logo. Change alt="..." for accessibility. -->
+   <!--
+| 07. TOOLS + INSURANCE CARRIERS
+-->
+   <section id="tools">
+    <div class="container tools-wrap">
+     <div class="tools-copy">
+      <div class="kicker">
+       Tools & Insurance Systems
+      </div>
+      <h2>
+       Tools I use.
+      </h2>
+      <p>
+       My experience as an Insurance Agency Operations Specialist includes working across agency management, workflow, communication, productivity, and creative platforms to keep day-to-day business operations organized, efficient, and running smoothly.
+To deliver reliable support and maintain seamless communication across teams, clients, and partners, I regularly utilize industry-standard software and systems.
+      </p>
+      <p>
+       <strong>
+        These are the core tools and insurance carrier platforms I've worked with.
+       </strong>
+      </p>
+     </div>
+     <div class="tools-showcase">
+      <div class="tools-group">
+       <div class="tools-group-label">
+        Agency, Productivity & Operations
+       </div>
+       <div aria-label="Agency, productivity and operations tools" class="tool-grid tool-grid-main">
+        <div class="tool-track">
+         <div class="tool-row">
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="EZLynx" loading="lazy" src="tools/EZ.png"/>
+           </div>
+           <strong>
+            EZLynx
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="AgencyZoom" loading="lazy" src="tools/AZ.png"/>
+           </div>
+           <strong>
+            AgencyZoom
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Google Workspace" loading="lazy" src="tools/Goo.png"/>
+           </div>
+           <strong>
+            Google Workspace
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Outlook" loading="lazy" src="tools/Out.png"/>
+           </div>
+           <strong>
+            Outlook
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Microsoft Teams" loading="lazy" src="tools/Teams.png"/>
+           </div>
+           <strong>
+            Microsoft Teams
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Slack" loading="lazy" src="tools/Sla.png"/>
+           </div>
+           <strong>
+            Slack
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Zoom" loading="lazy" src="tools/Zoom.png"/>
+           </div>
+           <strong>
+            Zoom
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Canva" loading="lazy" src="tools/Can.png"/>
+           </div>
+           <strong>
+            Canva
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="CapCut" loading="lazy" src="tools/Cap.png"/>
+           </div>
+           <strong>
+            CapCut
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="ChatGPT" loading="lazy" src="tools/gpt.png"/>
+           </div>
+           <strong>
+            ChatGPT
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Notion" loading="lazy" src="tools/Non.png"/>
+           </div>
+           <strong>
+            Notion
+           </strong>
+          </div>
+          <div class="tool reveal">
+           <div class="tool-logo">
+            <img alt="Adobe Acrobat" loading="lazy" src="tools/Adobe.png"/>
+           </div>
+           <strong>
+            Adobe Acrobat
+           </strong>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="tools-group carriers-group">
+       <div class="tools-group-label">
+        Insurance Carriers
+       </div>
+       <div aria-label="Insurance carriers I have worked with" class="carrier-marquee">
+        <div class="carrier-track">
+         <div class="carrier-row">
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Safeco logo" class="carrier-logo-img" src="images/carriers/safeco.png"/>
+           </div>
+           <strong>
+            Safeco
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Progressive logo" class="carrier-logo-img" src="images/carriers/progressive.png"/>
+           </div>
+           <strong>
+            Progressive
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="GEICO logo" class="carrier-logo-img" src="images/carriers/geico.png"/>
+           </div>
+           <strong>
+            GEICO
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Aegis logo" class="carrier-logo-img" src="images/carriers/aegis.png"/>
+           </div>
+           <strong>
+            Aegis
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Steadily logo" class="carrier-logo-img" src="images/carriers/steadily.png"/>
+           </div>
+           <strong>
+            Steadily
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Travelers logo" class="carrier-logo-img" src="images/carriers/travelers.png"/>
+           </div>
+           <strong>
+            Travelers
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Openly logo" class="carrier-logo-img" src="images/carriers/openly.png"/>
+           </div>
+           <strong>
+            Openly
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Mercury logo" class="carrier-logo-img" src="images/carriers/mercury.png"/>
+           </div>
+           <strong>
+            Mercury
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Foremost logo" class="carrier-logo-img" src="images/carriers/foremost.png"/>
+           </div>
+           <strong>
+            Foremost
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="American Modern logo" class="carrier-logo-img" src="images/carriers/american-modern.png"/>
+           </div>
+           <strong>
+            American Modern
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Nationwide logo" class="carrier-logo-img" src="images/carriers/nationwide.png"/>
+           </div>
+           <strong>
+            Nationwide
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Chubb logo" class="carrier-logo-img" src="images/carriers/chubb.png"/>
+           </div>
+           <strong>
+            Chubb
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="MSA logo" class="carrier-logo-img" src="images/carriers/MSA.png"/>
+           </div>
+           <strong>
+            Main Street America
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Orion180 logo" class="carrier-logo-img" src="images/carriers/orion180.png"/>
+           </div>
+           <strong>
+            Orion180
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="Hagerty logo" class="carrier-logo-img" src="images/carriers/hagerty.png"/>
+           </div>
+           <strong>
+            Hagerty
+           </strong>
+          </div>
+          <div class="carrier-card">
+           <div class="carrier-logo">
+            <img alt="American Collectors logo" class="carrier-logo-img" src="images/carriers/american-collectors.png"/>
+           </div>
+           <strong>
+            American Collectors
+           </strong>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Each .step is one workflow stage. Duplicate a .step to add another stage. -->
+   <!--
+| 08. WORKFLOW / PROCESS SECTION
+-->
+   <section class="process">
+    <div class="container">
+     <div class="section-head">
+      <div>
+       <div class="kicker">
+        My Workflow
+       </div>
+       <h2>
+        Simple. Organized. Effective.
+       </h2>
+      </div>
+      <p class="section-intro">
+       I follow a clear process to keep tasks moving and deliver dependable work.
+      </p>
+     </div>
+     <div class="process-grid">
+      <div class="step hover-lift reveal">
+       <div class="step-number">
+        01
+       </div>
+       <h3>
+        Receive
+       </h3>
+       <p>
+        Understand the request, priority, and desired outcome.
+       </p>
+      </div>
+      <div class="step hover-lift reveal">
+       <div class="step-number">
+        02
+       </div>
+       <h3>
+        Review
+       </h3>
+       <p>
+        Check information and identify what is needed.
+       </p>
+      </div>
+      <div class="step hover-lift reveal">
+       <div class="step-number">
+        03
+       </div>
+       <h3>
+        Process
+       </h3>
+       <p>
+        Complete the work carefully using the right tools.
+       </p>
+      </div>
+      <div class="step hover-lift reveal">
+       <div class="step-number">
+        04
+       </div>
+       <h3>
+        Verify
+       </h3>
+       <p>
+        Review the result for accuracy and completeness.
+       </p>
+      </div>
+      <div class="step hover-lift reveal">
+       <div class="step-number">
+        05
+       </div>
+       <h3>
+        Deliver
+       </h3>
+       <p>
+        Communicate the result and document next steps.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Each <article class="experience"> is one job/role entry. -->
+   <!--
+| 09. EXPERIENCE SECTION
+-->
+   <section id="experience">
+    <div class="container">
+     <div class="section-head">
+      <div>
+       <div class="kicker">
+        Relevant Experience
+       </div>
+       <h2>
+        Experience I can bring to your team.
+       </h2>
+      </div>
+      <p class="section-intro">
+       My previous roles gave me experience across operations, customer support, documentation, communication, and technical problem-solving.
+      </p>
+     </div>
+     <div class="experience-list">
+      <article class="experience">
+       <div class="experience-meta">
+        Oct 2022 – Mar 2027
+        <br/>
+        Operations Support
+       </div>
+       <div>
+        <h3>
+         Lava Automation Corp.
+        </h3>
+        <h4>
+         The Weikum Group
+        </h4>
+        <p>
+         Supported day-to-day business operations through workflow coordination, documentation, client and partner communication, system updates, renewals, research, and digital content support.
+        </p>
+       </div>
+      </article>
+      <article class="experience">
+       <div class="experience-meta">
+        Feb 2021 – Aug 2022
+        <br/>
+        Customer & Claims Support
+       </div>
+       <div>
+        <h3>
+         Teleperformance
+        </h3>
+        <h4>
+         BCBS Florida Blue
+        </h4>
+        <p>
+         Handled high-volume customer inquiries, claims concerns, escalations, email correspondence, and team support while serving as an interim team lead for a two-week period.
+        </p>
+       </div>
+      </article>
+      <article class="experience">
+       <div class="experience-meta">
+        Jul 2020 – Dec 2020
+        <br/>
+        Technical Support
+       </div>
+       <div>
+        <h3>
+         VXI Global Holdings
+        </h3>
+        <h4>
+         Comcast / Xfinity Home
+        </h4>
+        <p>
+         Provided remote technical support for US-based customers, troubleshooting connectivity issues and maintaining detailed case documentation in a high-volume environment.
+        </p>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <!-- LEARNING NOTE: Each .expect-card is one strength/value card. -->
+   <!--
+| 10. WHAT YOU CAN EXPECT
+-->
+   <section class="expect">
+    <div class="container">
+     <div class="section-head">
+      <div>
+       <div class="kicker">
+        What You Can Expect
+       </div>
+       <h2>
+        A support partner who keeps learning.
+       </h2>
+      </div>
+      <p class="section-intro">
+       I bring transferable skills while staying open to new industries, tools, processes, and responsibilities.
+      </p>
+     </div>
+     <div class="expect-grid">
+      <div class="expect-card hover-lift reveal">
+       <h3>
+        Dependable & Proactive
+       </h3>
+       <p>
+        I take ownership of assigned tasks and follow through.
+       </p>
+      </div>
+      <div class="expect-card hover-lift reveal">
+       <h3>
+        Quick Learner
+       </h3>
+       <p>
+        I adapt to new systems and workflows with curiosity.
+       </p>
+      </div>
+      <div class="expect-card hover-lift reveal">
+       <h3>
+        Clear Communicator
+       </h3>
+       <p>
+        I keep teammates and clients informed throughout the work.
+       </p>
+      </div>
+      <div class="expect-card hover-lift reveal">
+       <h3>
+        Professional & Respectful
+       </h3>
+       <p>
+        I value your time, processes, goals, and business.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!--
+| LEARNING NOTE:
+| Email, LinkedIn, and Book a Call are normal links.
+| The message form is connected to EmailJS through JavaScript below.
+| The Calendly calendar is intentionally NOT embedded.
+-->
+   <!--
+| 11. CONTACT / CTA SECTION
+-->
+   <!-- Desktop: Let's Connect stays on the LEFT; Send a Message stays on the RIGHT. -->
+   <section class="contact" id="contact">
+    <div class="container">
+     <!--
+| 11A. CONTACT INTRO
+-->
+     <div class="contact-copy">
+      <div class="kicker">
+       Let's Connect
+      </div>
+      <h2>
+       Looking for someone reliable to help move the work forward?
+      </h2>
+      <p>
+       I'm available to support insurance agencies with reliable operations,
         administrative, client service, and workflow assistance.
       </p>
-
       <!--
-        These three buttons give visitors different ways to contact you.
-        The Book a Call button opens Calendly in a new browser tab.
-      -->
+| These three buttons give visitors different ways to contact you.
+| The Book a Call button opens Calendly in a new browser tab.
+-->
       <div class="contact-actions">
-
-        <a
-          class="btn btn-primary btn-animate contact-book-call"
-          href="https://calendly.com/chpaulcervantes/30min"
-          target="_blank"
-          rel="noopener">
-          Book a Call
-        </a>
-
-        <a
-          class="btn btn-secondary btn-animate contact-email"
-          href="mailto:chpaulcervantes@gmail.com">
-          Email Me
-        </a>
-
-         <a
-          class="btn btn-secondary btn-animate contact-linkedin"
-          href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/"
-          target="_blank"
-          rel="noopener">
-          LinkedIn
-        </a>
-
+       <a class="btn btn-primary btn-animate contact-book-call" href="https://calendly.com/chpaulcervantes/30min" rel="noopener" target="_blank">
+        Book a Call
+       </a>
+       <a class="btn btn-secondary btn-animate contact-email" href="mailto:chpaulcervantes@gmail.com">
+        Email Me
+       </a>
+       <a class="btn btn-secondary btn-animate contact-linkedin" href="https://www.linkedin.com/in/christian-paul-cervantes-b14640399/" rel="noopener" target="_blank">
+        LinkedIn
+       </a>
       </div>
-
       <div class="contact-info">
-        <span class="contact-chip">Davao City, Philippines</span>
-        <span class="contact-chip">Remote Ready</span>
-        <span class="contact-chip">Flexible Across US Time Zones</span>
+       <span class="contact-chip">
+        Davao City, Philippines
+       </span>
+       <span class="contact-chip">
+        Remote Ready
+       </span>
+       <span class="contact-chip">
+        Flexible Across US Time Zones
+       </span>
       </div>
-    </div>
-
-
-    <!-- ==================== 11B. SEND A MESSAGE ==================== -->
-    <div class="contact-message">
-
+     </div>
+     <!--
+| 11B. SEND A MESSAGE
+-->
+     <div class="contact-message">
       <div class="contact-message-heading">
-        <span class="contact-message-label">Send a Message</span>
-
-        <h3>Tell me how I can help.</h3>
-
-        <p>
-          Have a project, question, or support need?
-          Send me a message and I will respond to via email as soon as I see it.
-        </p>
+       <span class="contact-message-label">
+        Send a Message
+       </span>
+       <h3>
+        Tell me how I can help.
+       </h3>
+       <p>
+        Have a project, question, or support need?
+          Send me a message and I will respond by email as soon as I see it.
+       </p>
       </div>
-
-
       <!--
-        EMAILJS FORM
-
-        Important:
-        - The "name" values must match your EmailJS template variables.
-        - Example: {{name}}, {{email}}, {{company}}, {{service}}, {{message}}
-        - Replace the EmailJS IDs in the JavaScript near the bottom of this file.
-      -->
-      <form id="contact-form" class="contact-form">
-
-        <!-- Name -->
-        <div class="contact-form-group">
-          <label class="contact-form-label" for="contact-name">
-            Your Name *
-          </label>
-
-          <input
-            id="contact-name"
-            type="text"
-            name="name"
-            placeholder="Your full name"
-            autocomplete="name"
-            required>
+| EMAILJS FORM
+| Important:
+| - The "name" values must match your EmailJS template variables.
+| - Example: {{name}}, {{email}}, {{company}}, {{service}}, {{message}}
+| - Replace the EmailJS IDs in the JavaScript near the bottom of this file.
+-->
+      <form class="contact-form" id="contact-form">
+       <!-- Name -->
+       <div class="contact-form-group">
+        <label class="contact-form-label" for="contact-name">
+         Your Name *
+        </label>
+        <input autocomplete="name" id="contact-name" name="name" placeholder="Your full name" required="" type="text"/>
+       </div>
+       <!-- Email -->
+       <div class="contact-form-group">
+        <label class="contact-form-label" for="contact-email">
+         Your Email *
+        </label>
+        <input autocomplete="email" id="contact-email" name="email" placeholder="you@example.com" required="" type="email"/>
+       </div>
+       <!-- Company -->
+       <div class="contact-form-group">
+        <label class="contact-form-label" for="contact-company">
+         Company / Organization
+        </label>
+        <input autocomplete="organization" id="contact-company" name="company" placeholder="Company name" type="text"/>
+       </div>
+       <!-- Service / Request Type -->
+       <div class="contact-form-group">
+        <label class="contact-form-label" for="contact-service">
+         How can I help?
+        </label>
+        <select id="contact-service" name="service">
+         <option value="">
+          Select an option
+         </option>
+         <option value="Administrative Support">
+          Administrative Support
+         </option>
+         <option value="Insurance Agency Operations">
+          Insurance Agency Operations
+         </option>
+         <option value="Client & Carrier Support">
+          Client & Carrier Support
+         </option>
+         <option value="Agency Systems & Workflow">
+          Agency Systems & Workflow
+         </option>
+         <option value="Creative & Digital Support">
+          Creative & Digital Support
+         </option>
+         <option value="Other">
+          Other
+         </option>
+        </select>
+       </div>
+       <!-- Message -->
+       <div class="contact-form-group full-width">
+        <label class="contact-form-label" for="contact-message">
+         Message *
+        </label>
+        <textarea id="contact-message" name="message" placeholder="Tell me a little about what you need help with..." required=""></textarea>
+       </div>
+       <!-- Submit button + response note -->
+       <div class="contact-form-group full-width">
+        <div class="contact-form-footer">
+         <button class="btn btn-primary btn-animate contact-submit" type="submit">
+          Send Message ↗
+         </button>
         </div>
-
-
-        <!-- Email -->
-        <div class="contact-form-group">
-          <label class="contact-form-label" for="contact-email">
-            Your Email *
-          </label>
-
-          <input
-            id="contact-email"
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            autocomplete="email"
-            required>
-        </div>
-
-
-        <!-- Company -->
-        <div class="contact-form-group">
-          <label class="contact-form-label" for="contact-company">
-            Company / Organization
-          </label>
-
-          <input
-            id="contact-company"
-            type="text"
-            name="company"
-            placeholder="Company name"
-            autocomplete="organization">
-        </div>
-
-
-        <!-- Service / Request Type -->
-        <div class="contact-form-group">
-          <label class="contact-form-label" for="contact-service">
-            How can I help?
-          </label>
-
-          <select id="contact-service" name="service">
-            <option value="">Select an option</option>
-            <option value="Administrative Support">Administrative Support</option>
-            <option value="Insurance Agency Operations">Insurance Agency Operations</option>
-            <option value="Client & Carrier Support">Client & Carrier Support</option>
-            <option value="Agency Systems & Workflow">Agency Systems & Workflow</option>
-            <option value="Creative & Digital Support">Creative & Digital Support</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-
-        <!-- Message -->
-        <div class="contact-form-group full-width">
-          <label class="contact-form-label" for="contact-message">
-            Message *
-          </label>
-
-          <textarea
-            id="contact-message"
-            name="message"
-            placeholder="Tell me a little about what you need help with..."
-            required></textarea>
-        </div>
-
-
-        <!-- Submit button + response note -->
-        <div class="contact-form-group full-width">
-
-          <div class="contact-form-footer">
-
-            <button
-              class="btn btn-primary btn-animate contact-submit"
-              type="submit">
-              Send Message ↗
-            </button>
-          </div>
-          <!-- JavaScript writes success/error messages here. -->
-          <p
-            id="contact-form-status"
-            class="contact-form-status"
-            aria-live="polite">
-          </p>
-
-        </div>
-
+        <!-- JavaScript writes success/error messages here. -->
+        <p aria-live="polite" class="contact-form-status" id="contact-form-status">
+        </p>
+       </div>
       </form>
+     </div>
     </div>
-
-  </div>
-</section>
-</main>
-
-<!-- LEARNING NOTE: This link is position:fixed, so it stays visible while scrolling. -->
-<!-- ==================== 12. FLOATING BOOK A CALL ==================== -->
-<a class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" target="_blank" rel="noopener" aria-label="Book a call with Christian Paul Cervantes">
-<span class="floating-book-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="3" y="4.5" width="18" height="16" rx="2"></rect>
-<line x1="7" y1="2.5" x2="7" y2="6.5"></line>
-<line x1="17" y1="2.5" x2="17" y2="6.5"></line>
-<line x1="3" y1="9" x2="21" y2="9"></line>
-</svg>
-</span>
-<span>Book a Call</span>
-</a>
-
-<!-- ==================== 12. FOOTER ==================== -->
-<footer>© 2026 Christian Paul Cervantes • Insurance Agency Operations Specialist</footer>
-
-
-<!-- ============================================================
-EMAILJS LIBRARY
-This lets the contact form send messages without a custom backend.
-============================================================ -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<!-- ============================================================
-JS 01 — EMAILJS CONTACT FORM
-------------------------------------------------------------
-This form sends the visitor's message through EmailJS.
-============================================================ -->
-<script>
-/* ============================================================
-EMAILJS CONTACT FORM — CONFIGURATION + SUBMISSION
-------------------------------------------------------------
-BEFORE PUBLISHING:
-1. Create an EmailJS account.
-2. Create an Email Service.
-3. Create an Email Template.
-4. Replace the three placeholder IDs below.
-5. Make sure your EmailJS template uses:
-   {{name}}
-   {{email}}
-   {{company}}
-   {{service}}
-   {{message}}
-============================================================ */
+   </section>
+  </main>
+  <!-- LEARNING NOTE: This link is position:fixed, so it stays visible while scrolling. -->
+  <!--
+| 12. FLOATING BOOK A CALL
+-->
+  <a aria-label="Book a call with Christian Paul Cervantes" class="floating-book-call" href="https://calendly.com/chpaulcervantes/30min" rel="noopener" target="_blank">
+   <span aria-hidden="true" class="floating-book-icon">
+    <svg fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17">
+     <rect height="16" rx="2" width="18" x="3" y="4.5">
+     </rect>
+     <line x1="7" x2="7" y1="2.5" y2="6.5">
+     </line>
+     <line x1="17" x2="17" y1="2.5" y2="6.5">
+     </line>
+     <line x1="3" x2="21" y1="9" y2="9">
+     </line>
+    </svg>
+   </span>
+   <span>
+    Book a Call
+   </span>
+  </a>
+  <!--
+| 12. FOOTER
+-->
+  <footer>
+   © 2026 Christian Paul Cervantes • Insurance Agency Operations Specialist
+  </footer>
+  <!--
+| EMAILJS LIBRARY
+| This lets the contact form send messages without a custom backend.
+-->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <!--
+| JS 01 — EMAILJS CONTACT FORM
+| This form sends the visitor's message through EmailJS.
+-->
+  <script>
+   /*
+| EMAILJS CONTACT FORM — CONFIGURATION + SUBMISSION
+| BEFORE PUBLISHING:
+| 1. Create an EmailJS account.
+| 2. Create an Email Service.
+| 3. Create an Email Template.
+| 4. Replace the three placeholder IDs below.
+| 5. Make sure your EmailJS template uses:
+| {{name}}
+| {{email}}
+| {{company}}
+| {{service}}
+| {{message}}
+*/
 
 const EMAILJS_PUBLIC_KEY = "j4UITb4XoPw9kF-nv";
 const EMAILJS_SERVICE_ID = "service_fmvuvui";
@@ -1780,18 +2618,52 @@ if (contactForm) {
   });
 
 }
+  </script>
+  <!--
+| JS 02 — MOBILE NAVIGATION
+| Compact menu behavior for tablets and phones.
+-->
+  <script>
+   (function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
 
-</script>
+  if (!toggle || !nav) return;
 
-<!-- ============================================================
-JS 02 — SCROLL REVEAL / ANIMATION BEHAVIOR
-------------------------------------------------------------
-CSS defines the animation.
-JavaScript watches for elements entering the viewport
-and adds "is-visible" to reveal them.
-============================================================ -->
-<script>
-  /* Scroll Reveal: elements animate when they enter the viewport. */
+  function closeNav() {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+  }
+
+  toggle.addEventListener('click', function () {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    nav.classList.toggle('is-open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+  });
+
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeNav);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeNav();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) closeNav();
+  });
+})();
+  </script>
+  <!--
+| JS 02 — SCROLL REVEAL / ANIMATION BEHAVIOR
+| CSS defines the animation.
+| JavaScript watches for elements entering the viewport
+| and adds "is-visible" to reveal them.
+-->
+  <script>
+   /* Scroll Reveal: elements animate when they enter the viewport. */
 (function () {
   const animatedItems = document.querySelectorAll('.reveal');
 
@@ -1816,42 +2688,34 @@ and adds "is-visible" to reveal them.
 
   animatedItems.forEach(item => observer.observe(item));
 })();
-</script>
-
-
-
-
-<!-- ============================================================
-BEGINNER TROUBLESHOOTING CHEAT SHEET
-------------------------------------------------------------
-Want to change a COLOR?     → Find background:, color:, or a --variable.
-Want to change SIZE?       → Find font-size, width, height, or min-height.
-Want more SPACE inside?    → Change padding.
-Want more SPACE outside?   → Change margin.
-Want space between items?  → Change gap.
-Want rounded corners?      → Change border-radius.
-Want an element to move?   → Look for transform.
-Want a button/link to go somewhere else? → Change href="...".
-Want to replace a photo/logo? → Change img src="...".
-Want mobile behavior?      → Look inside @media (max-width: ...).
-Want an animation?         → Search for @keyframes or animation:.
-Want to understand JS?     → Look for querySelector, addEventListener,
-IntersectionObserver, or classList.
-============================================================ -->
-
-<!-- ============================================================
-WEB DEV LEARNING NOTE
-------------------------------------------------------------
-When you edit this page:
-1. HTML changes WHAT exists.
-2. CSS changes HOW it looks.
-3. JavaScript changes HOW it behaves.
-
-Example:
-<div class="tool">...</div>   ← HTML creates the card
-.tool { ... }                 ← CSS styles the card
-.reveal.is-visible { ... }    ← CSS defines the shown state
-classList.add("is-visible")   ← JavaScript activates it
-============================================================ -->
-</body>
+  </script>
+  <!--
+| BEGINNER TROUBLESHOOTING CHEAT SHEET
+| Want to change a COLOR?     → Find background:, color:, or a --variable.
+| Want to change SIZE?       → Find font-size, width, height, or min-height.
+| Want more SPACE inside?    → Change padding.
+| Want more SPACE outside?   → Change margin.
+| Want space between items?  → Change gap.
+| Want rounded corners?      → Change border-radius.
+| Want an element to move?   → Look for transform.
+| Want a button/link to go somewhere else? → Change href="...".
+| Want to replace a photo/logo? → Change img src="...".
+| Want mobile behavior?      → Look inside @media (max-width: ...).
+| Want an animation?         → Search for @keyframes or animation:.
+| Want to understand JS?     → Look for querySelector, addEventListener,
+| IntersectionObserver, or classList.
+-->
+  <!--
+| WEB DEV LEARNING NOTE
+| When you edit this page:
+| 1. HTML changes WHAT exists.
+| 2. CSS changes HOW it looks.
+| 3. JavaScript changes HOW it behaves.
+| Example:
+| <div class="tool">...</div>   ← HTML creates the card
+| .tool { ... }                 ← CSS styles the card
+| .reveal.is-visible { ... }    ← CSS defines the shown state
+| classList.add("is-visible")   ← JavaScript activates it
+-->
+ </body>
 </html>
